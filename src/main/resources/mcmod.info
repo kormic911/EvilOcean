@@ -1,0 +1,16 @@
+[
+{
+  "modid": "EvilOcean",
+  "name": "EvilOcean",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/kormic911/EvilOcean",
+  "updateUrl": "",
+  "authorList": ["Kormic911"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
