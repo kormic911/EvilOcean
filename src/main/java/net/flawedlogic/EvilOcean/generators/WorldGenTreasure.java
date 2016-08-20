@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class WorldGenTreasure extends WorldGenerator {
 	private int maxChestDist = 2;
@@ -89,6 +90,7 @@ public class WorldGenTreasure extends WorldGenerator {
 
 	private ItemStack getLoot(Random rand) {
 		int i = rand.nextInt(4);
+		//GameRegistry.findItem(modId, name);
 
 		switch (i) {
 		case 0:

@@ -36,6 +36,9 @@ public class EvilOcean
     public static final String MODID = "EvilOcean";
     public static final String VERSION = "1.0.0";
     
+    public Boolean isOcean = false;
+    public String[] treasureItems;
+    
     private Map<String, IPlatformGenerator> generators = Maps.newHashMap();
     
     @EventHandler
@@ -46,6 +49,10 @@ public class EvilOcean
     	File cfgFile = event.getSuggestedConfigurationFile();
     	try {
     		config = new Configuration(cfgFile);
+    		
+    		isOcean = config.getBoolean("is ocean", "general", true, "Enabling this will cause the overworld to be an ocean world");
+    		//treasureItems = config.getStringList("items", "treasure", new String[] {"minecraft:gold_nugget:0=50,1:4", "minecraft:melon_seeds:0=10,1:10", "minecraft:gold_ingot:0=10,1:2", "minecraft:golden_apple:0=10,1:1"}, "List of items to use in treasure generation. Use this format: modid:itemName:metaId=weight,qtyMin:qtyMax");
+    		
     	} catch(Exception e) {
     		FMLLog.severe("[EvilOcean] Error loading config, deleting file and resetting");
     		e.printStackTrace();
@@ -103,13 +110,10 @@ public class EvilOcean
     
     public boolean shouldBeOcean(World world)
     {
-    	// Check and see if we have a void record for the dimension in question
-    	//if(dimensionIsVoid.containsKey(world.provider.dimensionId)) {
-    	//	return dimensionIsVoid.get(world.provider.dimensionId);
-    	//} else {
-    		// If we have no record, return false (our default for now)
-    	//	return false;
-    	//}
-    	return true;
+    	if(world.provider.dimensionId == 0) {
+    		return this.isOcean;
+    	} else {
+    		return false;
+    	}
     }
 }
