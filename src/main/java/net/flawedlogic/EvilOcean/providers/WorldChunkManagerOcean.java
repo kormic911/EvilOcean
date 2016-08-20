@@ -5,8 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.common.FMLLog;
+import net.flawedlogic.EvilOcean.EvilOcean;
 import net.flawedlogic.EvilOcean.biomes.BiomesOcean;
 import net.flawedlogic.EvilOcean.layers.GenLayerOcean;
+import net.flawedlogic.EvilOcean.generators.IPlatformGenerator;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.util.ReportedException;
@@ -28,6 +31,7 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 	private BiomeCache biomeCache;
 	private List biomesToSpawnIn;
 	private static final String __OBFID = "CL_00000166";
+	private World world;
 
 	protected WorldChunkManagerOcean() {
 		this.biomeCache = new BiomeCache(this);
@@ -35,15 +39,16 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		this.biomesToSpawnIn.addAll(allowedBiomes);
 	}
 
-	public WorldChunkManagerOcean(long par1, WorldType par3WorldType) {
+	public WorldChunkManagerOcean(long par1, WorldType par3WorldType, World world) {
 		GenLayer[] agenlayer = GenLayerOcean.initializeAllBiomeGenerators(par1, par3WorldType);
 		agenlayer = getModdedBiomeGenerators(par3WorldType, par1, agenlayer);
 		this.genBiomes = agenlayer[0];
 		this.biomeIndexLayer = agenlayer[1];
+		this.world = world;
 	}
 
 	public WorldChunkManagerOcean(World par1World) {
-		this(par1World.getSeed(), par1World.getWorldInfo().getTerrainType());
+		this(par1World.getSeed(), par1World.getWorldInfo().getTerrainType(), par1World);
 	}
 
 	@Override
@@ -187,6 +192,15 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 			chunkposition = new ChunkPosition(l2, 0, i3);
 			++j2;
 		}
+		
+        if (p_150795_1_ == 0 && p_150795_2_ == 0 && !world.getWorldInfo().isInitialized()) {
+            if (chunkposition == null)
+            {
+            	chunkposition = new ChunkPosition(0, 0, 0);
+            }
+
+            buildSpawn(world, chunkposition.chunkPosX, world.provider.getAverageGroundLevel(), chunkposition.chunkPosZ);
+        }
 
 		return chunkposition;
 	}
@@ -202,4 +216,12 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		MinecraftForge.TERRAIN_GEN_BUS.post(event);
 		return event.newBiomeGens;
 	}
+	
+    private void buildSpawn(World world, int x, int y, int z)
+    {
+        FMLLog.info("[EvilOcean] Building spawn platform at: %d, %d, %d", x, y, z);
+        IPlatformGenerator platform = EvilOcean.instance.getPlatformType(world);
+        platform.generate(world, x, y, z);
+    }	
+	
 }

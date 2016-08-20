@@ -16,7 +16,6 @@ import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;
 
 public abstract class GenLayerOcean extends GenLayer {
-	protected GenLayer field_75909_a;
 
 	public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType) {
 		GenLayerIsland genlayerisland = new GenLayerIsland(1L);
