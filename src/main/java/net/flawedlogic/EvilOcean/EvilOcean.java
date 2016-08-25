@@ -1,5 +1,6 @@
 package net.flawedlogic.EvilOcean;
 
+import net.flawedlogic.EvilOcean.events.EventWaterDrown;
 import net.flawedlogic.EvilOcean.generators.IPlatformGenerator;
 import net.flawedlogic.EvilOcean.generators.RaftPlatform;
 import net.flawedlogic.EvilOcean.providers.WorldProviderSurfaceOcean;
@@ -34,9 +35,10 @@ public class EvilOcean
 	@Instance("EvilOcean")
 	public static EvilOcean instance;
     public static final String MODID = "EvilOcean";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.0.1";
     
     public Boolean isOcean = false;
+    public Boolean instantDrown = false;
     public String[] treasureItems;
     
     private Map<String, IPlatformGenerator> generators = Maps.newHashMap();
@@ -51,6 +53,7 @@ public class EvilOcean
     		config = new Configuration(cfgFile);
     		
     		isOcean = config.getBoolean("is ocean", "general", true, "Enabling this will cause the overworld to be an ocean world");
+    		instantDrown = config.getBoolean("instant drown", "general", true, "Enabling this will cause you to drown instantly when you run out of air bubbles");
     		//treasureItems = config.getStringList("items", "treasure", new String[] {"minecraft:gold_nugget:0=50,1:4", "minecraft:melon_seeds:0=10,1:10", "minecraft:gold_ingot:0=10,1:2", "minecraft:golden_apple:0=10,1:1"}, "List of items to use in treasure generation. Use this format: modid:itemName:metaId=weight,qtyMin:qtyMax");
     		
     	} catch(Exception e) {
@@ -100,6 +103,9 @@ public class EvilOcean
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+    	if(instantDrown) {
+    		MinecraftForge.EVENT_BUS.register(new EventWaterDrown(null));
+    	}
     }
     
     public IPlatformGenerator getPlatformType(World world)
