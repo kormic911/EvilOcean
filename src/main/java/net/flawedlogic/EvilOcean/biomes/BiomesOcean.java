@@ -22,7 +22,7 @@ public abstract class BiomesOcean extends BiomeGenBase {
 
 	public static final BiomeGenBase forestOcean = new BiomeGenOceanLilypads(83).setColor(353825).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setTemperatureRainfall(0.7F, 0.8F).setHeight(height_normalOcean);
 
-	public static final BiomeGenBase taigaOcean = new BiomeGenBigOcean(84).setColor(747097).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setEnableSnow().setTemperatureRainfall(1.0F, 0.8F).setHeight(height_normalOcean);
+	public static final BiomeGenBase taigaOcean = new BiomeGenBigOcean(84).setColor(1456435).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setEnableSnow().setTemperatureRainfall(0.05F, 0.8F).setHeight(height_normalOcean);
 
 	public static final BiomeGenBase jungleOcean = new BiomeGenOceanLilypads(88).setColor(5470985).setBiomeName("Ocean").setFillerBlockMetadata(5470985).setTemperatureRainfall(1.2F, 0.9F).setHeight(height_normalOcean);
 
@@ -32,7 +32,7 @@ public abstract class BiomesOcean extends BiomeGenBase {
 
 	public static final BiomeGenBase mesaOcean = new BiomeGenOceanLilypads(97).setColor(14238997).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setHeight(height_normalOcean);
 
-	public static final BiomeGenBase megaTaigaOcean = new BiomeGenBigOcean(98).setColor(747097).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setEnableSnow().setTemperatureRainfall(1.0F, 0.8F).setHeight(height_normalOcean);
+	public static final BiomeGenBase megaTaigaOcean = new BiomeGenBigOcean(98).setColor(1456435).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setEnableSnow().setTemperatureRainfall(0.05F, 0.8F).setHeight(height_normalOcean);
 
 	public static final BiomeGenBase desertIslands = new BiomeGenDesertIsland(85).setColor(13786898).setBiomeName("Desert Island").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setHeight(height_normalIsland);
 
