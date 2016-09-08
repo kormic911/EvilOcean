@@ -19,14 +19,14 @@ import org.apache.logging.log4j.Level;
 
 import com.google.common.collect.Maps;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.ReflectionHelper;
+import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 @Mod(modid = EvilOcean.MODID, version = EvilOcean.VERSION)
 public class EvilOcean
@@ -110,7 +110,7 @@ public class EvilOcean
     
     public boolean shouldBeOcean(World world)
     {
-    	if(world.provider.dimensionId == 0) {
+    	if(world.provider.getDimensionId() == 0) {
     		return this.isOcean;
     	} else {
     		return false;

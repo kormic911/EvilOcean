@@ -1,7 +1,7 @@
 package net.flawedlogic.EvilOcean.providers;
 
 import net.flawedlogic.EvilOcean.EvilOcean;
-import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.WorldProviderSurface;
 import net.minecraft.world.chunk.IChunkProvider;
 
@@ -17,15 +17,15 @@ public class WorldProviderSurfaceOcean extends WorldProviderSurface
     }
 
     @Override
-    public ChunkCoordinates getRandomizedSpawnPoint()
+    public BlockPos getRandomizedSpawnPoint()
     {
-        if (EvilOcean.instance.shouldBeOcean(worldObj)) {
-            ChunkCoordinates spawn = new ChunkCoordinates(worldObj.getSpawnPoint());
-            spawn.posY = worldObj.getTopSolidOrLiquidBlock(spawn.posX, spawn.posZ);
+    	if (EvilOcean.instance.shouldBeOcean(worldObj)) {
+            BlockPos spawn = worldObj.getSpawnPoint();
+            spawn = worldObj.getTopSolidOrLiquidBlock(spawn);
             return spawn;
         } else {
             return super.getRandomizedSpawnPoint();
-        }
+        }    	
     }
 
     @Override
@@ -35,7 +35,8 @@ public class WorldProviderSurfaceOcean extends WorldProviderSurface
         {
             worldChunkMgr = new WorldChunkManagerOcean(worldObj);
         } else {
-            worldChunkMgr = terrainType.getChunkManager(worldObj);
+        	worldChunkMgr = worldObj.getWorldInfo().getTerrainType().getChunkManager(worldObj);
+            //worldChunkMgr = this.terrainType.getChunkManager(worldObj);
         }
     }
 
@@ -46,6 +47,6 @@ public class WorldProviderSurfaceOcean extends WorldProviderSurface
         {
             return new ChunkProviderOcean(worldObj, worldObj.getSeed(), false);
         }
-        return terrainType.getChunkGenerator(worldObj, field_82913_c);
+        return worldObj.getWorldInfo().getTerrainType().getChunkGenerator(worldObj, worldObj.getWorldInfo().getGeneratorOptions());
     }
 }

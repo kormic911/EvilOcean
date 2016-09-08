@@ -5,15 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.FMLLog;
 import net.flawedlogic.EvilOcean.EvilOcean;
 import net.flawedlogic.EvilOcean.biomes.BiomesOcean;
 import net.flawedlogic.EvilOcean.layers.GenLayerOcean;
 import net.flawedlogic.EvilOcean.generators.IPlatformGenerator;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ReportedException;
-import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeCache;
@@ -23,6 +22,7 @@ import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.WorldTypeEvent;
+import net.minecraftforge.fml.common.FMLLog;
 
 public class WorldChunkManagerOcean extends WorldChunkManager {
 	public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList(Arrays.asList(new BiomeGenBase[] { BiomesOcean.desertIslands, BiomesOcean.forestIslands, BiomesOcean.mountainIslands, BiomesOcean.jungleIslands, BiomesOcean.taigaIslands }));
@@ -168,17 +168,18 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		}
 	}
 
+	
 	@Override
-	public ChunkPosition findBiomePosition(int p_150795_1_, int p_150795_2_, int p_150795_3_, List p_150795_4_, Random p_150795_5_) {
+	public BlockPos findBiomePosition(int x, int z, int range, List<BiomeGenBase> biomes, Random random) {
 		IntCache.resetIntCache();
-		int l = p_150795_1_ - p_150795_3_ >> 2;
-		int i1 = p_150795_2_ - p_150795_3_ >> 2;
-		int j1 = p_150795_1_ + p_150795_3_ >> 2;
-		int k1 = p_150795_2_ + p_150795_3_ >> 2;
+		int l = x - range >> 2;
+		int i1 = z - range >> 2;
+		int j1 = x + range >> 2;
+		int k1 = z + range >> 2;
 		int l1 = j1 - l + 1;
 		int i2 = k1 - i1 + 1;
 		int[] aint = this.genBiomes.getInts(l, i1, l1, i2);
-		ChunkPosition chunkposition = null;
+		BlockPos pos = null;
 		int j2 = 0;
 
 		for (int k2 = 0; k2 < l1 * i2; ++k2) {
@@ -186,24 +187,26 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 			int i3 = i1 + k2 / l1 << 2;
 			BiomeGenBase biomegenbase = BiomesOcean.getBiome(aint[k2]);
 
-			if ((!(p_150795_4_.contains(biomegenbase))) || ((chunkposition != null) && (p_150795_5_.nextInt(j2 + 1) != 0))) {
+			if ((!(biomes.contains(biomegenbase))) || ((pos != null) && (random.nextInt(j2 + 1) != 0))) {
 				continue;
 			}
-			chunkposition = new ChunkPosition(l2, 0, i3);
+			//chunkposition = new ChunkPosition(l2, 0, i3);
+			pos = new BlockPos(l2, 0, i3);
 			++j2;
 		}
 		
-        if (p_150795_1_ == 0 && p_150795_2_ == 0 && !world.getWorldInfo().isInitialized()) {
-            if (chunkposition == null)
+        if (x == 0 && z == 0 && !world.getWorldInfo().isInitialized()) {
+            if (pos == null)
             {
-            	chunkposition = new ChunkPosition(0, 0, 0);
+            	pos = new BlockPos(0, 0, 0);
             }
 
-            buildSpawn(world, chunkposition.chunkPosX, world.provider.getAverageGroundLevel(), chunkposition.chunkPosZ);
+            buildSpawn(world, pos.getX(), world.provider.getAverageGroundLevel(), pos.getZ());
         }
 
-		return chunkposition;
+		return pos;
 	}
+	
 
 	@Override
 	public void cleanupCache() {

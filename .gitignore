@@ -1,24 +1,22 @@
-/.gradle/
-/build/
-/eclipse/
-/bin
-/.settings/
-.project
+# eclipse
+bin
+*.launch
+.settings
+.metadata
 .classpath
-/repo/
-/run/
-/logs/
-/crash-reports/
-/saves/
-/config/
-README.txt
-LICENSE-fml.txt
-MinecraftForge*
-*.iml
+.project
+
+# idea
+out
 *.ipr
 *.iws
-usernamecache.json
-options.txt
-forge-*-changelog.txt
-CREDITS-fml.txt
-/screenshots/
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run

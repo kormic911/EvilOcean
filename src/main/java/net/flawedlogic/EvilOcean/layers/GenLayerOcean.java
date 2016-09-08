@@ -29,7 +29,7 @@ public abstract class GenLayerOcean extends GenLayer {
 		genlayerzoom = new GenLayerZoom(2003L, genlayeraddisland);
 		genlayeraddisland = new GenLayerAddIsland(4L, genlayerzoom);
 		GenLayerAddMushroomIsland genlayeraddmushroomisland = new GenLayerAddMushroomIsland(5L, genlayeraddisland);
-		byte b0 = 4;
+		int b0 = 4;
 
 		if (par2WorldType == WorldType.LARGE_BIOMES) {
 			b0 = 6;

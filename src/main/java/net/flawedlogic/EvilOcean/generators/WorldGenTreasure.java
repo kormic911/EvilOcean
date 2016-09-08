@@ -6,26 +6,30 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class WorldGenTreasure extends WorldGenerator {
 	private int maxChestDist = 2;
 
+	public boolean generate(World world, Random random, BlockPos pos) {
+		return this.generate(world, random, pos.getX(), pos.getY(), pos.getZ());
+	}
+	
 	public boolean generate(World world, Random par2Random, int xCoord, int yCoord, int zCoord) {
 		int x = xCoord + par2Random.nextInt(8) - par2Random.nextInt(8);
 		int y = yCoord;
 		int z = zCoord + par2Random.nextInt(8) - par2Random.nextInt(8);
 
 		for (; y > 50; --y) {
-			Block block = world.getBlock(x, y, z);
-			if ((hasNoAirAround(world, x, y, z)) && (world.isAirBlock(x, y + 1, z)) && (((block == Blocks.grass) || (block == Blocks.sand)))) {
-				world.setBlock(x, y, z, getBlock(block));
+			Block block = world.getBlockState(new BlockPos(x, y, z)).getBlock();
+			if ((hasNoAirAround(world, x, y, z)) && (world.isAirBlock(new BlockPos(x, y + 1, z))) && (((block == Blocks.grass) || (block == Blocks.sand)))) {
+				world.setBlockState(new BlockPos(x, y, z), getBlock(block).getDefaultState());
 				createChest(world, x, y, z, par2Random);
 				return true;
 			}
-			if (world.getBlock(x, y, z) == Blocks.water) {
+			if (world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.water) {
 				return false;
 			}
 		}
@@ -34,12 +38,14 @@ public class WorldGenTreasure extends WorldGenerator {
 
 	private boolean hasNoAirAround(World world, int x, int y, int z) {
 		for (int x1 = x - 1; x1 <= x + 1; ++x1) {
-			if (world.isAirBlock(x1, y, z))
+			if (world.isAirBlock(new BlockPos(x1, y, z))) {
 				return false;
+			}
 		}
 		for (int z1 = z - 1; z1 <= z + 1; ++z1) {
-			if (world.isAirBlock(x, y, z1))
+			if (world.isAirBlock(new BlockPos(x, y, z1))) {
 				return false;
+			}
 		}
 		return true;
 	}
@@ -59,9 +65,9 @@ public class WorldGenTreasure extends WorldGenerator {
 		int z = signZ + random.nextInt(this.maxChestDist) - random.nextInt(this.maxChestDist);
 
 		for (int i = 0; i < 10; ++i) {
-			if ((world.getBlock(x, y, z).isNormalCube()) && (world.getBlock(x, y + 1, z).isNormalCube()) && (world.getBlock(x - 1, y, z).isNormalCube()) && (world.getBlock(x + 1, y, z).isNormalCube()) && (world.getBlock(x, y, z - 1).isNormalCube()) && (world.getBlock(x, y, z + 1).isNormalCube())) {
-				world.setBlock(x, y, z, Blocks.chest);
-				TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(x, y, z);
+			if ((world.getBlockState(new BlockPos(x, y, z)).getBlock().isNormalCube()) && (world.getBlockState(new BlockPos(x, y + 1, z)).getBlock().isNormalCube()) && (world.getBlockState(new BlockPos(x - 1, y, z)).getBlock().isNormalCube()) && (world.getBlockState(new BlockPos(x + 1, y, z)).getBlock().isNormalCube()) && (world.getBlockState(new BlockPos(x, y, z - 1)).getBlock().isNormalCube()) && (world.getBlockState(new BlockPos(x, y, z + 1)).getBlock().isNormalCube())) {
+				world.setBlockState(new BlockPos(x, y, z), Blocks.chest.getDefaultState());
+				TileEntityChest tileentitychest = (TileEntityChest) world.getTileEntity(new BlockPos(x, y, z));
 
 				if (tileentitychest == null) {
 					break;
@@ -77,7 +83,7 @@ public class WorldGenTreasure extends WorldGenerator {
 
 				return true;
 			}
-			if (world.getBlock(x, y, z) == Blocks.water) {
+			if (world.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.water) {
 				x = signX + random.nextInt(this.maxChestDist) - random.nextInt(this.maxChestDist);
 				y = signY;
 				z = signZ + random.nextInt(this.maxChestDist) - random.nextInt(this.maxChestDist);
@@ -90,7 +96,6 @@ public class WorldGenTreasure extends WorldGenerator {
 
 	private ItemStack getLoot(Random rand) {
 		int i = rand.nextInt(4);
-		//GameRegistry.findItem(modId, name);
 
 		switch (i) {
 		case 0:
