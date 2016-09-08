@@ -41,6 +41,7 @@ public abstract class GenLayerOcean extends GenLayer {
 		genlayer = GenLayerZoom.magnify(1000L, genlayerriverinit, b0 + 2);
 		GenLayerRiver genlayerriver = new GenLayerRiver(1L, genlayer);
 		GenLayerSmooth genlayersmooth = new GenLayerSmooth(1000L, genlayerriver);
+		
 		GenLayer genlayer1 = GenLayerZoom.magnify(1000L, genlayeraddmushroomisland, 0);
 		GenLayerBiomeOcean genlayerbiome = new GenLayerBiomeOcean(200L, genlayer1, par2WorldType);
 		genlayer1 = GenLayerZoom.magnify(1000L, genlayerbiome, 2);
