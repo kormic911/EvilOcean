@@ -25,14 +25,16 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
 public class WorldChunkManagerOcean extends WorldChunkManager {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList(Arrays.asList(new BiomeGenBase[] { BiomesOcean.desertIslands, BiomesOcean.forestIslands, BiomesOcean.mountainIslands, BiomesOcean.jungleIslands, BiomesOcean.taigaIslands }));
 	private GenLayer genBiomes;
 	private GenLayer biomeIndexLayer;
 	private BiomeCache biomeCache;
+	@SuppressWarnings("rawtypes")
 	private List biomesToSpawnIn;
-	private static final String __OBFID = "CL_00000166";
 	private World world;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected WorldChunkManagerOcean() {
 		this.biomeCache = new BiomeCache(this);
 		this.biomesToSpawnIn = new ArrayList();
@@ -136,6 +138,7 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		return par1ArrayOfBiomeGenBase;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean areBiomesViable(int par1, int par2, int par3, List par4List) {
 		IntCache.resetIntCache();
@@ -168,6 +171,7 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ChunkPosition findBiomePosition(int p_150795_1_, int p_150795_2_, int p_150795_3_, List p_150795_4_, Random p_150795_5_) {
 		IntCache.resetIntCache();

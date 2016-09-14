@@ -1,7 +1,6 @@
 package net.flawedlogic.EvilOcean.layers;
 
 import net.flawedlogic.EvilOcean.biomes.BiomesOcean;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 

@@ -1,11 +1,8 @@
 package net.flawedlogic.EvilOcean.providers;
 
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import java.util.List;
 import java.util.Random;
-
-import org.apache.logging.log4j.Level;
 
 import net.flawedlogic.EvilOcean.generators.MapGenOceanVillage;
 import net.minecraft.block.Block;
@@ -167,6 +164,7 @@ public class ChunkProviderOcean implements IChunkProvider {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public void replaceBlocksForBiome(int p_147422_1_, int p_147422_2_, Block[] p_147422_3_, byte[] p_147422_4_, BiomeGenBase[] p_147422_5_) {
 		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, p_147422_1_, p_147422_2_, p_147422_3_, p_147422_5_);
 		MinecraftForge.EVENT_BUS.post(event);
@@ -435,6 +433,7 @@ public class ChunkProviderOcean implements IChunkProvider {
 		return "RandomLevelSource";
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4) {
 		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(par2, par4);

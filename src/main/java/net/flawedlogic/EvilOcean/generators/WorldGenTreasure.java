@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class WorldGenTreasure extends WorldGenerator {
 	private int maxChestDist = 2;

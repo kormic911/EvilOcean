@@ -4,7 +4,6 @@ import net.flawedlogic.EvilOcean.generators.WorldGenTreasure;
 import net.flawedlogic.EvilOcean.generators.WorldGenWaterlilyOcean;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 

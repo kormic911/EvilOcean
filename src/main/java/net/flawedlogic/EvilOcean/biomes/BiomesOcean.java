@@ -2,7 +2,6 @@ package net.flawedlogic.EvilOcean.biomes;
 
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.BiomeGenBase.Height;
 import net.minecraft.world.biome.BiomeGenMesa;
 import net.minecraft.world.biome.BiomeGenTaiga;
 

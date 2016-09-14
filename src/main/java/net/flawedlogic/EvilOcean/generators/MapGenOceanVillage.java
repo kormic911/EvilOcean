@@ -12,6 +12,7 @@ public class MapGenOceanVillage extends MapGenVillage {
 		villageSpawnBiomes = Arrays.asList(new BiomeGenBase[] { BiomesOcean.desertIslands, BiomesOcean.forestIslands, BiomesOcean.taigaIslands, BiomesOcean.mountainIslands });
 	}
 
+	@SuppressWarnings("rawtypes")
 	public MapGenOceanVillage(Map par1Map) {
 		super(par1Map);
 		villageSpawnBiomes = Arrays.asList(new BiomeGenBase[] { BiomesOcean.desertIslands, BiomesOcean.forestIslands, BiomesOcean.taigaIslands, BiomesOcean.mountainIslands });
