@@ -1,9 +1,9 @@
 package net.flawedlogic.EvilOcean.biomes;
 
-import net.minecraft.world.biome.BiomeGenJungle;
+import net.minecraft.world.biome.BiomeJungle;
 
-public class BiomeGenJungleIsland extends BiomeGenJungle {
-	public BiomeGenJungleIsland(int par1) {
-		super(par1, false);
+public class BiomeJungleIsland extends BiomeJungle {
+	public BiomeJungleIsland(BiomeProperties biomeProperties) {
+		super(false, biomeProperties);
 	}
 }

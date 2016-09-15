@@ -1,10 +1,11 @@
 package net.flawedlogic.EvilOcean.biomes;
 
-import net.minecraft.world.biome.BiomeGenHills;
 
-public class BiomeGenMountains extends BiomeGenHills {
+import net.minecraft.world.biome.BiomeHills;
 
-	protected BiomeGenMountains(int par1) {
-		super(par1, false);
+public class BiomeMountainIslands extends BiomeHills {
+
+	protected BiomeMountainIslands(BiomeProperties biomeProperties) {
+		super(BiomeHills.Type.NORMAL, biomeProperties);
 	}
 }

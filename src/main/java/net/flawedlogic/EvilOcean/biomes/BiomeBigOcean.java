@@ -1,7 +1,7 @@
 package net.flawedlogic.EvilOcean.biomes;
 
-public class BiomeGenBigOcean extends BiomesOcean {
-	public BiomeGenBigOcean(int par1) {
-		super(par1);
+public class BiomeBigOcean extends OceanBiome {
+	public BiomeBigOcean(BiomeProperties biomeProperties) {
+		super(biomeProperties);
 	}
 }

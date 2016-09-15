@@ -7,15 +7,15 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenDesertWells;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 
-public class BiomeGenDesertIsland extends BiomesOcean {
-	public BiomeGenDesertIsland(int par1) {
-		super(par1);
+public class BiomeDesertIsland extends OceanBiome {
+	public BiomeDesertIsland(BiomeProperties biomeProperties) {
+		super(biomeProperties);
 		this.spawnableCreatureList.clear();
 
-		this.topBlock = Blocks.sand.getDefaultState();
-		this.fillerBlock = Blocks.sand.getDefaultState();
+		this.topBlock = Blocks.SAND.getDefaultState();
+		this.fillerBlock = Blocks.SAND.getDefaultState();
 		this.theBiomeDecorator.treesPerChunk = -999;
 		this.theBiomeDecorator.deadBushPerChunk = 2;
 		this.theBiomeDecorator.reedsPerChunk = 50;

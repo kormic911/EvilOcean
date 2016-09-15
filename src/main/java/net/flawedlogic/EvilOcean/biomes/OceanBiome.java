@@ -1,61 +1,46 @@
 package net.flawedlogic.EvilOcean.biomes;
 
+import org.apache.logging.log4j.Level;
+
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDecorator;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.BiomeGenBase.Height;
-import net.minecraft.world.biome.BiomeGenMesa;
-import net.minecraft.world.biome.BiomeGenTaiga;
+import net.minecraft.world.biome.BiomeForest;
+import net.minecraft.world.biome.BiomeMesa;
+import net.minecraft.world.biome.BiomeOcean;
+import net.minecraft.world.biome.BiomeTaiga;
+import net.minecraftforge.fml.common.FMLLog;
 
-public abstract class BiomesOcean extends BiomeGenBase {
-	protected static final BiomeGenBase.Height height_deepOcean = new BiomeGenBase.Height(-1.5F, 0.1F);
-	protected static final BiomeGenBase.Height height_normalOcean = new BiomeGenBase.Height(-1.5F, 0.2F);
-	protected static final BiomeGenBase.Height height_mountainOcean = new BiomeGenBase.Height(-1.5F, 0.3F);
-	protected static final BiomeGenBase.Height height_normalIsland = new BiomeGenBase.Height(0.0F, 0.3F);
-	protected static final BiomeGenBase.Height height_mountainIsland = new BiomeGenBase.Height(0.3F, 1.0F);
+public abstract class OceanBiome extends Biome {
 
+	public OceanBiome(BiomeProperties properties) {
+		super(properties);
+	}
 	
-	public static final BiomeGenBase deepOcean = new BiomeGenBigOcean(80).setColor(112).setBiomeName("Ocean").setHeight(height_deepOcean);
-	
-	public static final BiomeGenBase desertOcean = new BiomeGenDesertIsland(81).setColor(16421912).setBiomeName("Ocean").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setHeight(height_normalOcean);
+	public static void registerBiomes() {
+		//Biome.registerBiomes();
+		// Ocean Biomes
+		//registerBiome(80, "deep_ocean", new BiomeBigOcean((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.1F).setWaterColor(112)));
+		registerBiome(81, "desert_ocean", new BiomeDesertIsland((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setWaterColor(16421912).setRainDisabled().setRainfall(0.0F).setTemperature(2.0F)));
+		registerBiome(82, "mountain_ocean", new BiomeMountainIslands((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.3F).setRainfall(0.3F).setTemperature(0.2F).setWaterColor(6316128)));
+		registerBiome(83, "forest_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.7F).setWaterColor(353825)));
+		registerBiome(83, "taiga_ocean", new BiomeBigOcean((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.5F).setSnowEnabled().setWaterColor(1456435)));
+		registerBiome(88, "jungle_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.9F).setTemperature(1.2F).setWaterColor(5470985)));
+		registerBiome(95, "birch_forest_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.7F).setWaterColor(353825)));
+		registerBiome(96, "roofed_forest_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.7F).setWaterColor(353825)));
+		registerBiome(97, "mesa_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.0F).setTemperature(2.0F).setWaterColor(14238997).setRainDisabled()));
+		registerBiome(98, "mega_taiga_ocean", new BiomeBigOcean((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.05F).setTemperature(0.5F).setWaterColor(1456435).setSnowEnabled()));
 
-	public static final BiomeGenBase mountainOcean = new BiomeGenMountains(82).setColor(6316128).setBiomeName("Ocean").setHeight(height_mountainOcean).setTemperatureRainfall(0.2F, 0.3F);
-
-	public static final BiomeGenBase forestOcean = new BiomeGenOceanLilypads(83).setColor(353825).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setTemperatureRainfall(0.7F, 0.8F).setHeight(height_normalOcean);
-
-	public static final BiomeGenBase taigaOcean = new BiomeGenBigOcean(84).setColor(1456435).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setEnableSnow().setTemperatureRainfall(0.05F, 0.8F).setHeight(height_normalOcean);
-
-	public static final BiomeGenBase jungleOcean = new BiomeGenOceanLilypads(88).setColor(5470985).setBiomeName("Ocean").setFillerBlockMetadata(5470985).setTemperatureRainfall(1.2F, 0.9F).setHeight(height_normalOcean);
-
-	public static final BiomeGenBase birchForestOcean = new BiomeGenOceanLilypads(95).setColor(353825).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setTemperatureRainfall(0.7F, 0.8F).setHeight(height_normalOcean);
-
-	public static final BiomeGenBase roofedForestOcean = new BiomeGenOceanLilypads(96).setColor(353825).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setTemperatureRainfall(0.7F, 0.8F).setHeight(height_normalOcean);
-
-	public static final BiomeGenBase mesaOcean = new BiomeGenOceanLilypads(97).setColor(14238997).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setHeight(height_normalOcean);
-
-	public static final BiomeGenBase megaTaigaOcean = new BiomeGenBigOcean(98).setColor(1456435).setBiomeName("Ocean").setFillerBlockMetadata(5159473).setEnableSnow().setTemperatureRainfall(0.05F, 0.8F).setHeight(height_normalOcean);
-
-	public static final BiomeGenBase desertIslands = new BiomeGenDesertIsland(85).setColor(13786898).setBiomeName("Desert Island").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setHeight(height_normalIsland);
-
-	public static final BiomeGenBase forestIslands = new BiomeGenForestIsland(86, 0).setColor(2250012).setBiomeName("Forest Island").setFillerBlockMetadata(5159473).setTemperatureRainfall(0.7F, 0.8F).setHeight(height_normalIsland);
-
-	public static final BiomeGenBase taigaIslands = new BiomeGenTaiga(87, 0).setColor(1456435).setBiomeName("Taiga Island").setEnableSnow().setFillerBlockMetadata(5159473).setTemperatureRainfall(0.05F, 0.8F).setHeight(height_normalIsland);
-
-	public static final BiomeGenBase jungleIslands = new BiomeGenJungleIsland(89).setColor(2900485).setBiomeName("Jungle Island").setFillerBlockMetadata(5470985).setTemperatureRainfall(1.2F, 0.9F).setHeight(height_normalIsland);
-
-	public static final BiomeGenBase mountainIslands = new BiomeGenMountains(90).setColor(6316128).setBiomeName("Mountain Island").setHeight(height_mountainIsland).setTemperatureRainfall(1.9F, 0.5F);
-
-	public static final BiomeGenBase roofedForestIslands = new BiomeGenForestIsland(91, 3).setColor(4215066).setBiomeName("Forest Island").setHeight(height_normalIsland);
-
-	public static final BiomeGenBase birchForestIslands = new BiomeGenForestIsland(92, 2).setBiomeName("Forest Island").setColor(3175492).setHeight(height_normalIsland);
-
-	public static final BiomeGenBase mesaIslands = new BiomeGenMesa(93, false, false).setColor(14238997).setBiomeName("Mesa Island").setHeight(height_normalIsland);
-
-	public static BiomeGenBase[] oceanBiomes = { deepOcean, desertOcean, mountainOcean, forestOcean, taigaOcean,
-			jungleOcean, desertIslands, forestIslands, jungleIslands, mountainIslands, roofedForestIslands,
-			mushroomIsland, birchForestIslands, mesaIslands };
-
-	protected BiomesOcean(int par1) {
-		super(par1);
+		// Island Biomes
+		registerBiome(85, "desert_islands", new BiomeDesertIsland((new Biome.BiomeProperties("Desert Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setRainfall(0.0F).setTemperature(2.0F).setRainDisabled().setWaterColor(13786898)));
+		registerBiome(86, "forest_islands", new BiomeForestIsland(BiomeForest.Type.NORMAL, (new Biome.BiomeProperties("Forest Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setRainfall(0.8F).setTemperature(0.7F).setWaterColor(2250012)));
+		registerBiome(87, "taiga_islands", new BiomeTaiga(BiomeTaiga.Type.NORMAL, (new Biome.BiomeProperties("Taiga Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setRainfall(0.8F).setTemperature(0.05F).setWaterColor(1456435).setSnowEnabled()));
+		registerBiome(89, "jungle_islands", new BiomeJungleIsland((new Biome.BiomeProperties("Jungle Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setRainfall(0.9F).setTemperature(1.2F).setWaterColor(2900485)));
+		registerBiome(90, "mountain_islands", new BiomeMountainIslands((new Biome.BiomeProperties("Mountain Island")).setBaseHeight(0.3F).setHeightVariation(1.0F).setRainfall(0.5F).setTemperature(1.9F).setWaterColor(6316128)));
+		registerBiome(91, "roofed_forest_islands", new BiomeForestIsland(BiomeForest.Type.ROOFED, (new Biome.BiomeProperties("Forest Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setWaterColor(4215066)));
+		registerBiome(92, "birch_forest_islands", new BiomeForestIsland(BiomeForest.Type.BIRCH, (new Biome.BiomeProperties("Forest Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setWaterColor(3175492)));
+		registerBiome(92, "mesa_islands", new BiomeMesa(false, false, (new Biome.BiomeProperties("Mesa Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setWaterColor(14238997)));
+		FMLLog.log(Level.INFO, "Registered all biomes");
+		
 	}
 
 	public BiomeDecorator createBiomeDecorator() {
