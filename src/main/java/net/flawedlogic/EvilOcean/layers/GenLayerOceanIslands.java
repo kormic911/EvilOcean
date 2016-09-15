@@ -1,7 +1,7 @@
 package net.flawedlogic.EvilOcean.layers;
 
-import net.flawedlogic.EvilOcean.biomes.BiomesOcean;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.flawedlogic.EvilOcean.biomes.OceanBiomes;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
@@ -23,22 +23,22 @@ public class GenLayerOceanIslands extends GenLayer {
 				if (nextInt(3) == 0) {
 					int var10 = var9;
 
-					if (var9 == BiomesOcean.desertOcean.biomeID) {
-						var10 = BiomesOcean.desertIslands.biomeID;
-					} else if (var9 == BiomesOcean.forestOcean.biomeID) {
-						var10 = BiomesOcean.forestIslands.biomeID;
-					} else if (var9 == BiomesOcean.birchForestOcean.biomeID) {
-						var10 = BiomesOcean.birchForestIslands.biomeID;
-					} else if (var9 == BiomesOcean.roofedForestOcean.biomeID) {
-						var10 = BiomesOcean.roofedForestIslands.biomeID;
-					} else if (var9 == BiomesOcean.taigaOcean.biomeID) {
-						var10 = BiomesOcean.taigaIslands.biomeID;
-					} else if (var9 == BiomesOcean.jungleOcean.biomeID) {
-						var10 = BiomesOcean.jungleIslands.biomeID;
-					} else if (var9 == BiomesOcean.mountainOcean.biomeID) {
-						var10 = BiomesOcean.mountainIslands.biomeID;
-					} else if (var9 == BiomesOcean.mesaOcean.biomeID) {
-						var10 = BiomesOcean.mesaIslands.biomeID;
+					if (var9 == Biome.getIdForBiome(OceanBiomes.DESERT_OCEAN)) {
+						var10 = Biome.getIdForBiome(OceanBiomes.DESERT_ISLANDS);
+					} else if (var9 == Biome.getIdForBiome(OceanBiomes.FOREST_OCEAN)) {
+						var10 = Biome.getIdForBiome(OceanBiomes.FOREST_ISLANDS);
+					} else if (var9 == Biome.getIdForBiome(OceanBiomes.BIRCH_FOREST_OCEAN)) {
+						var10 = Biome.getIdForBiome(OceanBiomes.BIRCH_FOREST_ISLANDS);
+					} else if (var9 == Biome.getIdForBiome(OceanBiomes.ROOFED_FOREST_OCEAN)) {
+						var10 = Biome.getIdForBiome(OceanBiomes.ROOFED_FOREST_ISLANDS);
+					} else if (var9 == Biome.getIdForBiome(OceanBiomes.TAIGA_OCEAN)) {
+						var10 = Biome.getIdForBiome(OceanBiomes.TAIGA_ISLANDS);
+					} else if (var9 == Biome.getIdForBiome(OceanBiomes.JUNGLE_OCEAN)) {
+						var10 = Biome.getIdForBiome(OceanBiomes.JUNGLE_ISLANDS);
+					} else if (var9 == Biome.getIdForBiome(OceanBiomes.MOUNTAIN_OCEAN)) {
+						var10 = Biome.getIdForBiome(OceanBiomes.MOUNTAIN_ISLANDS);
+					} else if (var9 == Biome.getIdForBiome(OceanBiomes.MESA_OCEAN)) {
+						var10 = Biome.getIdForBiome(OceanBiomes.MESA_ISLANDS);
 					}
 
 					if (var10 == var9) {

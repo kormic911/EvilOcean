@@ -1,11 +1,13 @@
 package net.flawedlogic.EvilOcean;
 
+import net.flawedlogic.EvilOcean.biomes.OceanBiome;
 import net.flawedlogic.EvilOcean.generators.IPlatformGenerator;
 import net.flawedlogic.EvilOcean.generators.RaftPlatform;
 import net.flawedlogic.EvilOcean.providers.WorldProviderSurfaceOcean;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
+import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -76,22 +78,25 @@ public class EvilOcean
     public void load(FMLInitializationEvent event)
     {
     	FMLLog.log(Level.INFO, "[EvilOcean] initialized");
-    	Hashtable<Integer, Class<? extends WorldProvider>> providers = ReflectionHelper.getPrivateValue(DimensionManager.class, null, "providers");
-    	providers.put(0,  WorldProviderSurfaceOcean.class);
+    	//Hashtable<Integer, Class<? extends WorldProvider>> providers = ReflectionHelper.getPrivateValue(DimensionManager.class, null, "providers");
+    	//providers.put(0,  WorldProviderSurfaceOcean.class);
+    	DimensionManager.unregisterDimension(0);
+    	DimensionManager.registerDimension(0,  DimensionType.register("Overworld", "", 0, WorldProviderSurfaceOcean.class, true));
+    	OceanBiome.registerBiomes();
     }
     
     @SubscribeEvent
     public void onWorldLoad(WorldEvent.Load event) 
     {
     	//FMLLog.log(Level.INFO, "onWorldLoad event");
-        if (!event.world.isRemote && event.world instanceof WorldServer)
+        if (!event.getWorld().isRemote && event.getWorld() instanceof WorldServer)
         {
-            WorldServer world = (WorldServer)event.world;
-            int spawnX = (int)(event.world.getWorldInfo().getSpawnX() / world.provider.getMovementFactor() / 16);
-            int spawnZ = (int)(event.world.getWorldInfo().getSpawnZ() / world.provider.getMovementFactor() / 16);
+            WorldServer world = (WorldServer)event.getWorld();
+            int spawnX = (int)(event.getWorld().getWorldInfo().getSpawnX() / world.provider.getMovementFactor() / 16);
+            int spawnZ = (int)(event.getWorld().getWorldInfo().getSpawnZ() / world.provider.getMovementFactor() / 16);
             for (int x = -1; x <= 1; x++) {
                 for (int z = -1; z <= 1; z++) {
-                    world.theChunkProviderServer.loadChunk(spawnX + x, spawnZ + z);
+                    world.getChunkProvider().loadChunk(spawnX + x, spawnZ + z);
                 }
             }
         }
@@ -110,7 +115,7 @@ public class EvilOcean
     
     public boolean shouldBeOcean(World world)
     {
-    	if(world.provider.getDimensionId() == 0) {
+    	if(world.provider.getDimension() == 0) {
     		return this.isOcean;
     	} else {
     		return false;

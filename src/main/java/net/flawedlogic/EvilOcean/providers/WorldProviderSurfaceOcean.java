@@ -1,8 +1,10 @@
 package net.flawedlogic.EvilOcean.providers;
 
 import net.flawedlogic.EvilOcean.EvilOcean;
-import net.minecraft.util.BlockPos;
+import net.flawedlogic.EvilOcean.biomes.OceanBiome;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldProviderSurface;
+import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 
 public class WorldProviderSurfaceOcean extends WorldProviderSurface
@@ -29,19 +31,19 @@ public class WorldProviderSurfaceOcean extends WorldProviderSurface
     }
 
     @Override
-    protected void registerWorldChunkManager()
+    protected void createBiomeProvider()
     {
         if (EvilOcean.instance.shouldBeOcean(worldObj))
         {
-            worldChunkMgr = new WorldChunkManagerOcean(worldObj);
+        	biomeProvider = new WorldChunkManagerOcean(worldObj);
         } else {
-        	worldChunkMgr = worldObj.getWorldInfo().getTerrainType().getChunkManager(worldObj);
+        	biomeProvider = worldObj.getWorldInfo().getTerrainType().getBiomeProvider(worldObj);
             //worldChunkMgr = this.terrainType.getChunkManager(worldObj);
         }
     }
 
     @Override
-    public IChunkProvider createChunkGenerator()
+    public IChunkGenerator createChunkGenerator()
     {
         if (EvilOcean.instance.shouldBeOcean(worldObj))
         {

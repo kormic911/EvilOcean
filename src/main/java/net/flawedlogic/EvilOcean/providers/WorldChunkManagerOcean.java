@@ -5,34 +5,39 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
+
 import net.flawedlogic.EvilOcean.EvilOcean;
-import net.flawedlogic.EvilOcean.biomes.BiomesOcean;
+import net.flawedlogic.EvilOcean.biomes.OceanBiome;
+import net.flawedlogic.EvilOcean.biomes.OceanBiomes;
 import net.flawedlogic.EvilOcean.layers.GenLayerOcean;
 import net.flawedlogic.EvilOcean.generators.IPlatformGenerator;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.util.BlockPos;
+import net.minecraft.init.Biomes;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ReportedException;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeCache;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.WorldChunkManager;
+import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import net.minecraftforge.fml.common.FMLLog;
 
-public class WorldChunkManagerOcean extends WorldChunkManager {
-	public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList(Arrays.asList(new BiomeGenBase[] { BiomesOcean.desertIslands, BiomesOcean.forestIslands, BiomesOcean.mountainIslands, BiomesOcean.jungleIslands, BiomesOcean.taigaIslands }));
+public class WorldChunkManagerOcean extends BiomeProvider {
+	public static List<Biome> allowedBiomes = Lists.newArrayList(OceanBiomes.DESERT_ISLANDS, OceanBiomes.FOREST_ISLANDS, OceanBiomes.MOUNTAIN_ISLANDS, OceanBiomes.JUNGLE_ISLANDS, OceanBiomes.TAIGA_ISLANDS);
 	private GenLayer genBiomes;
 	private GenLayer biomeIndexLayer;
 	private BiomeCache biomeCache;
+	@SuppressWarnings("rawtypes")
 	private List biomesToSpawnIn;
-	private static final String __OBFID = "CL_00000166";
 	private World world;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected WorldChunkManagerOcean() {
 		this.biomeCache = new BiomeCache(this);
 		this.biomesToSpawnIn = new ArrayList();
@@ -52,52 +57,17 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 	}
 
 	@Override
-	public float[] getRainfall(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5) {
-		IntCache.resetIntCache();
-
-		if ((par1ArrayOfFloat == null) || (par1ArrayOfFloat.length < par4 * par5)) {
-			par1ArrayOfFloat = new float[par4 * par5];
-		}
-
-		int[] aint = this.biomeIndexLayer.getInts(par2, par3, par4, par5);
-
-		for (int i1 = 0; i1 < par4 * par5; ++i1) {
-			try {
-				float f = BiomesOcean.getBiome(aint[i1]).getIntRainfall() / 65536.0F;
-
-				if (f > 1.0F) {
-					f = 1.0F;
-				}
-
-				par1ArrayOfFloat[i1] = f;
-			} catch (Throwable throwable) {
-				CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Invalid Biome id");
-				CrashReportCategory crashreportcategory = crashreport.makeCategory("DownfallBlock");
-				crashreportcategory.addCrashSection("biome id", Integer.valueOf(i1));
-				crashreportcategory.addCrashSection("downfalls[] size", Integer.valueOf(par1ArrayOfFloat.length));
-				crashreportcategory.addCrashSection("x", Integer.valueOf(par2));
-				crashreportcategory.addCrashSection("z", Integer.valueOf(par3));
-				crashreportcategory.addCrashSection("w", Integer.valueOf(par4));
-				crashreportcategory.addCrashSection("h", Integer.valueOf(par5));
-				throw new ReportedException(crashreport);
-			}
-		}
-
-		return par1ArrayOfFloat;
-	}
-
-	@Override
-	public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5) {
+	public Biome[] getBiomesForGeneration(Biome[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5) {
 		IntCache.resetIntCache();
 
 		if ((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < par4 * par5)) {
-			par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
+			par1ArrayOfBiomeGenBase = new Biome[par4 * par5];
 		}
 
 		int[] aint = this.genBiomes.getInts(par2, par3, par4, par5);
 		try {
 			for (int i1 = 0; i1 < par4 * par5; ++i1) {
-				par1ArrayOfBiomeGenBase[i1] = BiomesOcean.getBiome(aint[i1]);
+				par1ArrayOfBiomeGenBase[i1] = OceanBiome.getBiome(aint[i1]);
 			}
 
 			return par1ArrayOfBiomeGenBase;
@@ -114,15 +84,15 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 	}
 
 	@Override
-	public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5, boolean par6) {
+	public Biome[] getBiomeGenAt(Biome[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5, boolean par6) {
 		IntCache.resetIntCache();
 
 		if ((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < par4 * par5)) {
-			par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
+			par1ArrayOfBiomeGenBase = new Biome[par4 * par5];
 		}
 
 		if ((par6) && (par4 == 16) && (par5 == 16) && ((par2 & 0xF) == 0) && ((par3 & 0xF) == 0)) {
-			BiomeGenBase[] abiomegenbase1 = this.biomeCache.getCachedBiomes(par2, par3);
+			Biome[] abiomegenbase1 = this.biomeCache.getCachedBiomes(par2, par3);
 			System.arraycopy(abiomegenbase1, 0, par1ArrayOfBiomeGenBase, 0, par4 * par5);
 			return par1ArrayOfBiomeGenBase;
 		}
@@ -130,12 +100,13 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		int[] aint = this.biomeIndexLayer.getInts(par2, par3, par4, par5);
 
 		for (int i1 = 0; i1 < par4 * par5; ++i1) {
-			par1ArrayOfBiomeGenBase[i1] = BiomesOcean.getBiome(aint[i1]);
+			par1ArrayOfBiomeGenBase[i1] = OceanBiome.getBiome(aint[i1]);
 		}
 
 		return par1ArrayOfBiomeGenBase;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean areBiomesViable(int par1, int par2, int par3, List par4List) {
 		IntCache.resetIntCache();
@@ -148,7 +119,7 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		int[] aint = this.genBiomes.getInts(l, i1, l1, i2);
 		try {
 			for (int j2 = 0; j2 < l1 * i2; ++j2) {
-				BiomeGenBase biomegenbase = BiomesOcean.getBiome(aint[j2]);
+				Biome biomegenbase = OceanBiome.getBiome(aint[j2]);
 
 				if (!(par4List.contains(biomegenbase))) {
 					return false;
@@ -170,7 +141,7 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 
 	
 	@Override
-	public BlockPos findBiomePosition(int x, int z, int range, List<BiomeGenBase> biomes, Random random) {
+	public BlockPos findBiomePosition(int x, int z, int range, List<Biome> biomes, Random random) {
 		IntCache.resetIntCache();
 		int l = x - range >> 2;
 		int i1 = z - range >> 2;
@@ -185,12 +156,11 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		for (int k2 = 0; k2 < l1 * i2; ++k2) {
 			int l2 = l + k2 % l1 << 2;
 			int i3 = i1 + k2 / l1 << 2;
-			BiomeGenBase biomegenbase = BiomesOcean.getBiome(aint[k2]);
+			Biome biomegenbase = OceanBiome.getBiome(aint[k2]);
 
 			if ((!(biomes.contains(biomegenbase))) || ((pos != null) && (random.nextInt(j2 + 1) != 0))) {
 				continue;
 			}
-			//chunkposition = new ChunkPosition(l2, 0, i3);
 			pos = new BlockPos(l2, 0, i3);
 			++j2;
 		}
@@ -217,7 +187,7 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 	public GenLayer[] getModdedBiomeGenerators(WorldType worldType, long seed, GenLayer[] original) {
 		WorldTypeEvent.InitBiomeGens event = new WorldTypeEvent.InitBiomeGens(worldType, seed, original);
 		MinecraftForge.TERRAIN_GEN_BUS.post(event);
-		return event.newBiomeGens;
+		return event.getNewBiomeGens();
 	}
 	
     private void buildSpawn(World world, int x, int y, int z)
