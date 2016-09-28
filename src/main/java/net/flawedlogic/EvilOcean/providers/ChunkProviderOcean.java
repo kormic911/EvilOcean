@@ -199,7 +199,7 @@ public class ChunkProviderOcean implements IChunkGenerator {
 		OceanChunkPrimer chunkPrimer = new OceanChunkPrimer();
 		
 		func_147424_a(x, z, chunkPrimer);
-		this.biomesForGeneration = this.worldObj.getBiomeProvider().getBiomesForGeneration(this.biomesForGeneration, x * 4 - 2, z * 4 - 2, 16, 16);
+		this.biomesForGeneration = this.worldObj.getBiomeProvider().getBiomesForGeneration(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		
 		replaceBlocksForBiome(x, z, chunkPrimer, this.biomesForGeneration);
 		
