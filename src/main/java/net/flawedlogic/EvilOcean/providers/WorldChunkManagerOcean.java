@@ -1,7 +1,6 @@
 package net.flawedlogic.EvilOcean.providers;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -14,7 +13,6 @@ import net.flawedlogic.EvilOcean.layers.GenLayerOcean;
 import net.flawedlogic.EvilOcean.generators.IPlatformGenerator;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ReportedException;
 import net.minecraft.world.World;
@@ -84,7 +82,7 @@ public class WorldChunkManagerOcean extends BiomeProvider {
 	}
 
 	@Override
-	public Biome[] getBiomeGenAt(Biome[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5, boolean par6) {
+	public Biome[] getBiomes(Biome[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5, boolean par6) {
 		IntCache.resetIntCache();
 
 		if ((par1ArrayOfBiomeGenBase == null) || (par1ArrayOfBiomeGenBase.length < par4 * par5)) {

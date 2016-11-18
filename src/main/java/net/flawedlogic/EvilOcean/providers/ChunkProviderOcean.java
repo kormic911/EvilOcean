@@ -327,7 +327,7 @@ public class ChunkProviderOcean implements IChunkGenerator {
 		net.minecraft.block.BlockFalling.fallInstantly = true;
 		int k = par2 * 16;
 		int l = par3 * 16;
-		Biome biome = this.worldObj.getBiomeGenForCoords(new BlockPos(k + 16, 0, l + 16));
+		Biome biome = this.worldObj.getBiome(new BlockPos(k + 16, 0, l + 16));
 		this.rand.setSeed(this.worldObj.getSeed());
 		long i1 = this.rand.nextLong() / 2L * 2L + 1L;
 		long j1 = this.rand.nextLong() / 2L * 2L + 1L;
@@ -417,7 +417,7 @@ public class ChunkProviderOcean implements IChunkGenerator {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, BlockPos pos) {
-		Biome Biome = this.worldObj.getBiomeGenForCoords(pos);
+		Biome Biome = this.worldObj.getBiome(pos);
 		return (((par1EnumCreatureType == EnumCreatureType.MONSTER) && (this.scatteredFeatureGenerator.isSwampHut(pos))) ? this.scatteredFeatureGenerator.getScatteredFeatureSpawnList() : Biome.getSpawnableList(par1EnumCreatureType));
 	}
 
@@ -433,10 +433,10 @@ public class ChunkProviderOcean implements IChunkGenerator {
 	}
 	
 	@Override
-	public BlockPos getStrongholdGen(World worldIn, String structureName, BlockPos position) {
+	public BlockPos getStrongholdGen(World worldIn, String structureName, BlockPos position, boolean p_180706_3_) {
         if ("Stronghold".equals(structureName))
         {
-        	return this.strongholdGenerator.getClosestStrongholdPos(worldIn, position);
+        	return this.strongholdGenerator.getClosestStrongholdPos(worldIn, position, p_180706_3_);
         }
 
         return null;
