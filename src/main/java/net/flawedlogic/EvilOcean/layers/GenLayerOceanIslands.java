@@ -1,5 +1,6 @@
 package net.flawedlogic.EvilOcean.layers;
 
+import net.flawedlogic.EvilOcean.EvilOcean;
 import net.flawedlogic.EvilOcean.biomes.BiomesOcean;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
@@ -20,25 +21,27 @@ public class GenLayerOceanIslands extends GenLayer {
 				initChunkSeed(var8 + par1, var7 + par2);
 				int var9 = var5[(var8 + 1 + (var7 + 1) * (par3 + 2))];
 
-				if (nextInt(3) == 0) {
+				if (nextInt(EvilOcean.instance.islandSpawnRate) == 0) {
 					int var10 = var9;
 
-					if (var9 == BiomesOcean.desertOcean.biomeID) {
-						var10 = BiomesOcean.desertIslands.biomeID;
-					} else if (var9 == BiomesOcean.forestOcean.biomeID) {
-						var10 = BiomesOcean.forestIslands.biomeID;
-					} else if (var9 == BiomesOcean.birchForestOcean.biomeID) {
-						var10 = BiomesOcean.birchForestIslands.biomeID;
-					} else if (var9 == BiomesOcean.roofedForestOcean.biomeID) {
-						var10 = BiomesOcean.roofedForestIslands.biomeID;
-					} else if (var9 == BiomesOcean.taigaOcean.biomeID) {
-						var10 = BiomesOcean.taigaIslands.biomeID;
-					} else if (var9 == BiomesOcean.jungleOcean.biomeID) {
-						var10 = BiomesOcean.jungleIslands.biomeID;
-					} else if (var9 == BiomesOcean.mountainOcean.biomeID) {
-						var10 = BiomesOcean.mountainIslands.biomeID;
-					} else if (var9 == BiomesOcean.mesaOcean.biomeID) {
-						var10 = BiomesOcean.mesaIslands.biomeID;
+					if(EvilOcean.instance.enableIslands) {
+						if (var9 == BiomesOcean.desertOcean.biomeID) {
+							var10 = BiomesOcean.desertIslands.biomeID;
+						} else if (var9 == BiomesOcean.forestOcean.biomeID) {
+							var10 = BiomesOcean.forestIslands.biomeID;
+						} else if (var9 == BiomesOcean.birchForestOcean.biomeID) {
+							var10 = BiomesOcean.birchForestIslands.biomeID;
+						} else if (var9 == BiomesOcean.roofedForestOcean.biomeID) {
+							var10 = BiomesOcean.roofedForestIslands.biomeID;
+						} else if (var9 == BiomesOcean.taigaOcean.biomeID) {
+							var10 = BiomesOcean.taigaIslands.biomeID;
+						} else if (var9 == BiomesOcean.jungleOcean.biomeID) {
+							var10 = BiomesOcean.jungleIslands.biomeID;
+						} else if (var9 == BiomesOcean.mountainOcean.biomeID) {
+							var10 = BiomesOcean.mountainIslands.biomeID;
+						} else if (var9 == BiomesOcean.mesaOcean.biomeID) {
+							var10 = BiomesOcean.mesaIslands.biomeID;
+						}
 					}
 
 					if (var10 == var9) {
