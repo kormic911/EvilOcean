@@ -28,17 +28,24 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.ReflectionHelper;
-
+/**
+ * 
+ * @author Kormic911
+ * Seed used to test: -7868937974971673935
+ * 
+ */
 @Mod(modid = EvilOcean.MODID, version = EvilOcean.VERSION)
 public class EvilOcean
 {
 	@Instance("EvilOcean")
 	public static EvilOcean instance;
     public static final String MODID = "EvilOcean";
-    public static final String VERSION = "1.0.1";
+    public static final String VERSION = "1.0.4";
     
     public Boolean isOcean = false;
     public Boolean instantDrown = false;
+    public Boolean enableIslands = true;
+    public int islandSpawnRate = 3;
     public String[] treasureItems;
     
     private Map<String, IPlatformGenerator> generators = Maps.newHashMap();
@@ -54,6 +61,9 @@ public class EvilOcean
     		
     		isOcean = config.getBoolean("is ocean", "general", true, "Enabling this will cause the overworld to be an ocean world");
     		instantDrown = config.getBoolean("instant drown", "general", true, "Enabling this will cause you to drown instantly when you run out of air bubbles");
+    		enableIslands = config.getBoolean("Enable Islands", "general", true, "Enabling this will enable island generation throughout the world");
+    		islandSpawnRate = config.getInt("Island Spawn Rate", "general", 3, 1, 10, "Sets the random chance that an island will spawm within a biome as well as how large the island will be, the lower the number the more frequent and larger");
+    		
     		//treasureItems = config.getStringList("items", "treasure", new String[] {"minecraft:gold_nugget:0=50,1:4", "minecraft:melon_seeds:0=10,1:10", "minecraft:gold_ingot:0=10,1:2", "minecraft:golden_apple:0=10,1:1"}, "List of items to use in treasure generation. Use this format: modid:itemName:metaId=weight,qtyMin:qtyMax");
     		
     	} catch(Exception e) {
