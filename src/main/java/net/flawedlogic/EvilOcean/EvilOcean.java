@@ -1,6 +1,7 @@
 package net.flawedlogic.EvilOcean;
 
 import net.flawedlogic.EvilOcean.biomes.OceanBiome;
+import net.flawedlogic.EvilOcean.events.EventWaterDrown;
 import net.flawedlogic.EvilOcean.generators.IPlatformGenerator;
 import net.flawedlogic.EvilOcean.generators.RaftPlatform;
 import net.flawedlogic.EvilOcean.providers.WorldProviderSurfaceOcean;
@@ -36,7 +37,7 @@ public class EvilOcean
 	@Instance("EvilOcean")
 	public static EvilOcean instance;
     public static final String MODID = "EvilOcean";
-    public static final String VERSION = "1.0.2";
+    public static final String VERSION = "1.0.3";
     
     public Boolean isOcean = false;
     public Boolean instantDrown = false;
@@ -111,6 +112,9 @@ public class EvilOcean
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+    	if(instantDrown) {
+    		MinecraftForge.EVENT_BUS.register(new EventWaterDrown(null));
+    	}
     }
     
     public IPlatformGenerator getPlatformType(World world)
