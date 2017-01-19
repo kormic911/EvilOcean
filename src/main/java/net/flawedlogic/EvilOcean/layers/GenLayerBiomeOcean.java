@@ -11,7 +11,7 @@ public class GenLayerBiomeOcean extends GenLayer {
 
 	public GenLayerBiomeOcean(long par1, GenLayer par3GenLayer, WorldType par4WorldType) {
 		super(par1);
-		this.allowedBiomes = new BiomeGenBase[] { BiomesOcean.deepOcean, BiomesOcean.forestOcean,
+		this.allowedBiomes = new BiomeGenBase[] { BiomesOcean.ocean, BiomesOcean.deepOcean, BiomesOcean.forestOcean,
 				BiomesOcean.desertOcean, BiomesOcean.jungleOcean, BiomesOcean.mountainOcean, BiomesOcean.taigaOcean,
 				BiomesOcean.birchForestOcean, BiomesOcean.roofedForestOcean, BiomesOcean.mesaOcean };
 

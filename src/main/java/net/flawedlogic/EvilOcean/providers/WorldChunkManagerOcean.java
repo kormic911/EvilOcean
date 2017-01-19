@@ -97,6 +97,17 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
 		int[] aint = this.genBiomes.getInts(par2, par3, par4, par5);
 		try {
 			for (int i1 = 0; i1 < par4 * par5; ++i1) {
+				if(aint[i1] == BiomeGenBase.ocean.biomeID) {
+					aint[i1] = BiomesOcean.ocean.biomeID;
+				}
+				
+				if(aint[i1] == BiomeGenBase.deepOcean.biomeID) {
+					aint[i1] = BiomesOcean.deepOcean.biomeID;
+				}
+				
+				if(aint[i1] == BiomeGenBase.river.biomeID || aint[i1] == BiomeGenBase.beach.biomeID || aint[i1] == BiomeGenBase.coldBeach.biomeID || aint[i1] == BiomeGenBase.frozenRiver.biomeID) {
+					aint[i1] = BiomesOcean.ocean.biomeID;
+				}
 				par1ArrayOfBiomeGenBase[i1] = BiomesOcean.getBiome(aint[i1]);
 			}
 
