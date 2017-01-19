@@ -6,12 +6,13 @@ import net.minecraft.world.biome.BiomeGenMesa;
 import net.minecraft.world.biome.BiomeGenTaiga;
 
 public abstract class BiomesOcean extends BiomeGenBase {
-	protected static final BiomeGenBase.Height height_deepOcean = new BiomeGenBase.Height(-1.5F, 0.1F);
+	protected static final BiomeGenBase.Height height_deepOcean = new BiomeGenBase.Height(-1.8F, 0.1F);
 	protected static final BiomeGenBase.Height height_normalOcean = new BiomeGenBase.Height(-1.5F, 0.2F);
 	protected static final BiomeGenBase.Height height_mountainOcean = new BiomeGenBase.Height(-1.5F, 0.3F);
 	protected static final BiomeGenBase.Height height_normalIsland = new BiomeGenBase.Height(0.0F, 0.3F);
 	protected static final BiomeGenBase.Height height_mountainIsland = new BiomeGenBase.Height(0.3F, 1.0F);
 
+	public static final BiomeGenBase ocean = new BiomeGenBigOcean(79).setColor(112).setBiomeName("Ocean").setHeight(height_normalOcean);
 	
 	public static final BiomeGenBase deepOcean = new BiomeGenBigOcean(80).setColor(112).setBiomeName("Ocean").setHeight(height_deepOcean);
 	
@@ -49,7 +50,7 @@ public abstract class BiomesOcean extends BiomeGenBase {
 
 	public static final BiomeGenBase mesaIslands = new BiomeGenMesa(93, false, false).setColor(14238997).setBiomeName("Mesa Island").setHeight(height_normalIsland);
 
-	public static BiomeGenBase[] oceanBiomes = { deepOcean, desertOcean, mountainOcean, forestOcean, taigaOcean,
+	public static BiomeGenBase[] oceanBiomes = { ocean, deepOcean, desertOcean, mountainOcean, forestOcean, taigaOcean,
 			jungleOcean, desertIslands, forestIslands, jungleIslands, mountainIslands, roofedForestIslands,
 			mushroomIsland, birchForestIslands, mesaIslands };
 
