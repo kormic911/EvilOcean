@@ -11,16 +11,16 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 @Cancelable
 @HasResult
 public class EventWaterDrown extends PlayerEvent {
-	public EventWaterDrown(EntityPlayer player) {
-		super(player);
-	}
+    public EventWaterDrown(EntityPlayer player) {
+        super(player);
+    }
 
-	@SubscribeEvent
-	public boolean onLivingAttackEvent(LivingAttackEvent event) {
-		if ((event.getEntityLiving() instanceof EntityPlayer) && (event.getSource() == DamageSource.drown)) {
-			event.getEntityLiving().setHealth(0.5F);
-			return true;
-		}
-		return false;
-	}
+    @SubscribeEvent
+    public boolean onLivingAttackEvent(LivingAttackEvent event) {
+        if ( (event.getEntityLiving() instanceof EntityPlayer) && (event.getSource() == DamageSource.drown) ) {
+            event.getEntityLiving().setHealth(0.5F);
+            return true;
+        }
+        return false;
+    }
 }
