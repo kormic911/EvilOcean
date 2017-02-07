@@ -9,17 +9,17 @@ import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 
 public class WorldTypeOcean extends WorldType {
-	public WorldTypeOcean(String par2Str) {
-		super(par2Str);
-	}
+    public WorldTypeOcean(String par2Str) {
+        super(par2Str);
+    }
 
-	@Override
-	public BiomeProvider getBiomeProvider(World world) {
-		return new WorldChunkManagerOcean(world);
-	}
+    @Override
+    public BiomeProvider getBiomeProvider(World world) {
+        return new WorldChunkManagerOcean(world);
+    }
 
-	@Override
-	public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
-		return new ChunkProviderOcean(world, world.getSeed(), world.getWorldInfo().isMapFeaturesEnabled());
-	}
+    @Override
+    public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
+        return new ChunkProviderOcean(world, world.getSeed(), world.getWorldInfo().isMapFeaturesEnabled());
+    }
 }
