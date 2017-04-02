@@ -27,7 +27,7 @@ import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import net.minecraftforge.fml.common.FMLLog;
 
 public class WorldChunkManagerOcean extends BiomeProvider {
-	public static List<Biome> allowedBiomes = Lists.newArrayList(OceanBiomes.DESERT_ISLANDS, OceanBiomes.FOREST_ISLANDS, OceanBiomes.MOUNTAIN_ISLANDS, OceanBiomes.JUNGLE_ISLANDS, OceanBiomes.TAIGA_ISLANDS);
+	public static List<Biome> allowedBiomes = Lists.newArrayList(OceanBiomes.DESERT_ISLANDS, OceanBiomes.FOREST_ISLANDS, OceanBiomes.MOUNTAIN_ISLANDS, OceanBiomes.JUNGLE_ISLANDS, OceanBiomes.TAIGA_ISLANDS, OceanBiomes.BIRCH_FOREST_ISLANDS, OceanBiomes.ROOFED_FOREST_ISLANDS, OceanBiomes.MESA_ISLANDS);
 	private GenLayer genBiomes;
 	private GenLayer biomeIndexLayer;
 	private BiomeCache biomeCache;

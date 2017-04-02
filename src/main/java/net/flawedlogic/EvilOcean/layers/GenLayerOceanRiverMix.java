@@ -35,7 +35,7 @@ public class GenLayerOceanRiverMix extends GenLayerRiverMix {
 
         for (int i1 = 0; i1 < p_75904_3_ * p_75904_4_; ++i1)
         {
-            if (aint[i1] != Biome.getIdForBiome(Biomes.OCEAN) && aint[i1] != Biome.getIdForBiome(Biomes.DEEP_OCEAN) && 
+            if (aint[i1] != Biome.getIdForBiome(Biomes.OCEAN) && aint[i1] != Biome.getIdForBiome(Biomes.DEEP_OCEAN) && aint[i1] != Biome.getIdForBiome(OceanBiomes.DEEP_OCEAN) &&
             	aint[i1] != Biome.getIdForBiome(OceanBiomes.BIRCH_FOREST_OCEAN) && aint[i1] != Biome.getIdForBiome(OceanBiomes.DESERT_OCEAN) && 
             	aint[i1] != Biome.getIdForBiome(OceanBiomes.FOREST_OCEAN) && aint[i1] != Biome.getIdForBiome(OceanBiomes.JUNGLE_OCEAN) && 
             	aint[i1] != Biome.getIdForBiome(OceanBiomes.MESA_OCEAN) && aint[i1] != Biome.getIdForBiome(OceanBiomes.MOUNTAIN_OCEAN) && 

@@ -17,7 +17,8 @@ public class OceanChunkPrimer extends ChunkPrimer {
         return iblockstate == null ? DEFAULT_STATE : iblockstate;
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void setBlockState(int x, int y, int z, IBlockState state)
     {
         this.data[getBlockIndex(x, y, z)] = (char)Block.BLOCK_STATE_IDS.get(state);

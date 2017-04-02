@@ -9,10 +9,24 @@ import net.minecraft.world.chunk.IChunkProvider;
 
 public class WorldProviderSurfaceOcean extends WorldProviderSurface
 {
+	
+	@Override
+	protected void init()
+	{
+		this.hasSkyLight = true;
+        if (EvilOcean.instance.shouldBeOcean(world))
+        {
+        	biomeProvider = new WorldChunkManagerOcean(world);
+        } else {
+        	biomeProvider = world.getWorldInfo().getTerrainType().getBiomeProvider(world);
+        }
+	}
+	
+	
     @Override
     public boolean canCoordinateBeSpawn(int x, int z)
     {
-        if (EvilOcean.instance.shouldBeOcean(worldObj)) {
+        if (EvilOcean.instance.shouldBeOcean(world)) {
             return true;
         }
         return super.canCoordinateBeSpawn(x, z);
@@ -21,9 +35,9 @@ public class WorldProviderSurfaceOcean extends WorldProviderSurface
     @Override
     public BlockPos getRandomizedSpawnPoint()
     {
-    	if (EvilOcean.instance.shouldBeOcean(worldObj)) {
-            BlockPos spawn = worldObj.getSpawnPoint();
-            spawn = worldObj.getTopSolidOrLiquidBlock(spawn);
+    	if (EvilOcean.instance.shouldBeOcean(world)) {
+            BlockPos spawn = world.getSpawnPoint();
+            spawn = world.getTopSolidOrLiquidBlock(spawn);
             return spawn;
         } else {
             return super.getRandomizedSpawnPoint();
@@ -31,24 +45,12 @@ public class WorldProviderSurfaceOcean extends WorldProviderSurface
     }
 
     @Override
-    protected void createBiomeProvider()
-    {
-        if (EvilOcean.instance.shouldBeOcean(worldObj))
-        {
-        	biomeProvider = new WorldChunkManagerOcean(worldObj);
-        } else {
-        	biomeProvider = worldObj.getWorldInfo().getTerrainType().getBiomeProvider(worldObj);
-            //worldChunkMgr = this.terrainType.getChunkManager(worldObj);
-        }
-    }
-
-    @Override
     public IChunkGenerator createChunkGenerator()
     {
-        if (EvilOcean.instance.shouldBeOcean(worldObj))
+        if (EvilOcean.instance.shouldBeOcean(world))
         {
-            return new ChunkProviderOcean(worldObj, worldObj.getSeed(), false);
+            return new ChunkProviderOcean(world, world.getSeed(), false);
         }
-        return worldObj.getWorldInfo().getTerrainType().getChunkGenerator(worldObj, worldObj.getWorldInfo().getGeneratorOptions());
+        return world.getWorldInfo().getTerrainType().getChunkGenerator(world, world.getWorldInfo().getGeneratorOptions());
     }
 }

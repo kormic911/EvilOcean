@@ -89,7 +89,7 @@ public class ChunkProviderOcean implements IChunkGenerator {
 
 		for (int j = -2; j <= 2; ++j) {
 			for (int k = -2; k <= 2; ++k) {
-				float f = 10.0F / MathHelper.sqrt_float(j * j + k * k + 0.2F);
+				float f = 10.0F / MathHelper.sqrt(j * j + k * k + 0.2F);
 				this.parabolicField[(j + 2 + (k + 2) * 5)] = f;
 			}
 		}
@@ -307,7 +307,7 @@ public class ChunkProviderOcean implements IChunkGenerator {
 					double d7 = this.field_147428_e[l] / 512.0D;
 					double d8 = this.field_147425_f[l] / 512.0D;
 					double d9 = (this.field_147427_d[l] / 10.0D + 1.0D) / 2.0D;
-					double d10 = MathHelper.denormalizeClamp(d7, d8, d9) - d6;
+					double d10 = MathHelper.clampedLerp(d7, d8, d9) - d6;
 
 					if (j2 > 29) {
 						double d11 = (j2 - 29) / 3.0F;
@@ -444,7 +444,6 @@ public class ChunkProviderOcean implements IChunkGenerator {
 
 	@Override
 	public boolean generateStructures(Chunk chunkIn, int x, int z) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }
