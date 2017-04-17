@@ -23,7 +23,7 @@ public abstract class OceanBiome extends Biome {
 		registerBiome(81, "desert_ocean", new BiomeDesertIsland((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setWaterColor(112).setRainDisabled().setRainfall(0.0F).setTemperature(2.0F)));
 		registerBiome(82, "mountain_ocean", new BiomeMountainIslands((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.3F).setRainfall(0.3F).setTemperature(0.2F).setWaterColor(112)));
 		registerBiome(83, "forest_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.7F).setWaterColor(112)));
-		registerBiome(83, "taiga_ocean", new BiomeBigOcean((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.5F).setSnowEnabled().setWaterColor(112)));
+		registerBiome(83, "taiga_ocean", new BiomeBigOcean((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.5F).setSnowEnabled().setWaterColor(1456435)));
 		registerBiome(88, "jungle_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.9F).setTemperature(1.2F).setWaterColor(112)));
 		registerBiome(95, "birch_forest_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.7F).setWaterColor(112)));
 		registerBiome(96, "roofed_forest_ocean", new BiomeGenOceanLilypads((new Biome.BiomeProperties("Ocean")).setBaseHeight(-1.5F).setHeightVariation(0.2F).setRainfall(0.8F).setTemperature(0.7F).setWaterColor(112)));
