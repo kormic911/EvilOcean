@@ -20,7 +20,6 @@ public abstract class OceanBiomes
     public static final Biome ROOFED_FOREST_ISLANDS;
     public static final Biome MESA_ISLANDS;
     
-    public static final Biome OCEAN;
     public static final Biome DEEP_OCEAN;
     public static final Biome DESERT_OCEAN;
     public static final Biome MOUNTAIN_OCEAN;
@@ -65,8 +64,7 @@ public abstract class OceanBiomes
         	ROOFED_FOREST_ISLANDS = getRegisteredBiome("roofed_forest_islands");
         	MESA_ISLANDS = getRegisteredBiome("mesa_islands");
         	
-        	OCEAN = getRegisteredBiome("eo_ocean");
-            DEEP_OCEAN = getRegisteredBiome("eo_deep_ocean");
+            DEEP_OCEAN = getRegisteredBiome("deep_ocean");
             DESERT_OCEAN = getRegisteredBiome("desert_ocean");
             MOUNTAIN_OCEAN = getRegisteredBiome("mountain_ocean");
             FOREST_OCEAN = getRegisteredBiome("forest_ocean");

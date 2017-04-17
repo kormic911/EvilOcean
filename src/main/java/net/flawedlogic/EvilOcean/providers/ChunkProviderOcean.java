@@ -34,6 +34,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextOverworld;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import net.minecraft.world.WorldEntitySpawner;
 
 public class ChunkProviderOcean implements IChunkGenerator {
 	private Random rand;
@@ -371,6 +372,7 @@ public class ChunkProviderOcean implements IChunkGenerator {
 
 		biome.decorate(this.worldObj, this.rand, new BlockPos(k, 0, l));
 		//SpawnerAnimals.performWorldGenSpawning(this.worldObj, biome, k + 8, l + 8, 16, 16, this.rand);
+		WorldEntitySpawner.performWorldGenSpawning(this.worldObj, biome, k + 8, l + 8, 16, 16, this.rand);
 		k += 8;
 		l += 8;
 
