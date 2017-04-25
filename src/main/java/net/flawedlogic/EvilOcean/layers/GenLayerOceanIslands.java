@@ -21,7 +21,7 @@ public class GenLayerOceanIslands extends GenLayer {
 				initChunkSeed(var8 + par1, var7 + par2);
 				int var9 = var5[(var8 + 1 + (var7 + 1) * (par3 + 2))];
 
-				if (nextInt(EvilOcean.instance.islandSpawnRate) == 0) {
+				//if (nextInt(EvilOcean.instance.islandSpawnRate) == 0) {
 					int var10 = var9;
 
 					if(EvilOcean.instance.enableIslands) {
@@ -58,9 +58,9 @@ public class GenLayerOceanIslands extends GenLayer {
 							var6[(var8 + var7 * par3)] = var9;
 						}
 					}
-				} else {
-					var6[(var8 + var7 * par3)] = var9;
-				}
+				//} else {
+				//	var6[(var8 + var7 * par3)] = var9;
+				//}
 			}
 		}
 
