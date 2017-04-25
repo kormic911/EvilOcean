@@ -3,9 +3,10 @@ package net.flawedlogic.EvilOcean.biomes;
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenDesert;
 import net.minecraft.world.gen.feature.WorldGenDesertWells;
 
-public class BiomeGenDesertIsland extends BiomesOcean {
+public class BiomeGenDesertIsland extends BiomeGenDesert {
 	public BiomeGenDesertIsland(int par1) {
 		super(par1);
 		this.spawnableCreatureList.clear();

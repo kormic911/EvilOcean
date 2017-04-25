@@ -32,6 +32,7 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
  * 
  * @author Kormic911
  * Seed used to test: -7868937974971673935
+ * -2218714256695789383
  * 
  */
 @Mod(modid = EvilOcean.MODID, version = EvilOcean.VERSION)
@@ -40,7 +41,7 @@ public class EvilOcean
 	@Instance("EvilOcean")
 	public static EvilOcean instance;
     public static final String MODID = "EvilOcean";
-    public static final String VERSION = "1.0.5";
+    public static final String VERSION = "1.0.6";
     
     public Boolean isOcean = false;
     public Boolean instantDrown = false;

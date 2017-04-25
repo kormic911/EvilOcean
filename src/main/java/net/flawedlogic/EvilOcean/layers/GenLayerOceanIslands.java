@@ -1,5 +1,6 @@
 package net.flawedlogic.EvilOcean.layers;
 
+import cpw.mods.fml.common.FMLLog;
 import net.flawedlogic.EvilOcean.EvilOcean;
 import net.flawedlogic.EvilOcean.biomes.BiomesOcean;
 import net.minecraft.world.gen.layer.GenLayer;
@@ -20,45 +21,42 @@ public class GenLayerOceanIslands extends GenLayer {
 				initChunkSeed(var8 + par1, var7 + par2);
 				int var9 = var5[(var8 + 1 + (var7 + 1) * (par3 + 2))];
 
-				if (nextInt(EvilOcean.instance.islandSpawnRate) == 0) {
-					int var10 = var9;
+				int var10 = var9;
 
-					if(EvilOcean.instance.enableIslands) {
-						if (var9 == BiomesOcean.desertOcean.biomeID) {
-							var10 = BiomesOcean.desertIslands.biomeID;
-						} else if (var9 == BiomesOcean.forestOcean.biomeID) {
-							var10 = BiomesOcean.forestIslands.biomeID;
-						} else if (var9 == BiomesOcean.birchForestOcean.biomeID) {
-							var10 = BiomesOcean.birchForestIslands.biomeID;
-						} else if (var9 == BiomesOcean.roofedForestOcean.biomeID) {
-							var10 = BiomesOcean.roofedForestIslands.biomeID;
-						} else if (var9 == BiomesOcean.taigaOcean.biomeID) {
-							var10 = BiomesOcean.taigaIslands.biomeID;
-						} else if (var9 == BiomesOcean.jungleOcean.biomeID) {
-							var10 = BiomesOcean.jungleIslands.biomeID;
-						} else if (var9 == BiomesOcean.mountainOcean.biomeID) {
-							var10 = BiomesOcean.mountainIslands.biomeID;
-						} else if (var9 == BiomesOcean.mesaOcean.biomeID) {
-							var10 = BiomesOcean.mesaIslands.biomeID;
-						}
+				if(EvilOcean.instance.enableIslands) {
+					if (var9 == BiomesOcean.desertOcean.biomeID) {
+						var10 = BiomesOcean.desertIslands.biomeID;
+					} else if (var9 == BiomesOcean.forestOcean.biomeID) {
+						var10 = BiomesOcean.forestIslands.biomeID;
+					} else if (var9 == BiomesOcean.birchForestOcean.biomeID) {
+						var10 = BiomesOcean.birchForestIslands.biomeID;
+					} else if (var9 == BiomesOcean.roofedForestOcean.biomeID) {
+						var10 = BiomesOcean.roofedForestIslands.biomeID;
+					} else if (var9 == BiomesOcean.taigaOcean.biomeID) {
+						var10 = BiomesOcean.taigaIslands.biomeID;
+					} else if (var9 == BiomesOcean.jungleOcean.biomeID) {
+						var10 = BiomesOcean.jungleIslands.biomeID;
+					} else if (var9 == BiomesOcean.mountainOcean.biomeID) {
+						var10 = BiomesOcean.mountainIslands.biomeID;
+					} else if (var9 == BiomesOcean.mesaOcean.biomeID) {
+						var10 = BiomesOcean.mesaIslands.biomeID;
 					}
+				}
 
-					if (var10 == var9) {
-						var6[(var8 + var7 * par3)] = var9;
-					} else {
-						int var11 = var5[(var8 + 1 + (var7 + 1 - 1) * (par3 + 2))];
-						int var12 = var5[(var8 + 1 + 1 + (var7 + 1) * (par3 + 2))];
-						int var13 = var5[(var8 + 1 - 1 + (var7 + 1) * (par3 + 2))];
-						int var14 = var5[(var8 + 1 + (var7 + 1 + 1) * (par3 + 2))];
-
-						if ((var11 == var9) && (var12 == var9) && (var13 == var9) && (var14 == var9)) {
-							var6[(var8 + var7 * par3)] = var10;
-						} else {
-							var6[(var8 + var7 * par3)] = var9;
-						}
-					}
-				} else {
+				if (var10 == var9) {
 					var6[(var8 + var7 * par3)] = var9;
+				} else {
+					int var11 = var5[(var8 + 1 + (var7 + 1 - 1) * (par3 + 2))];
+					int var12 = var5[(var8 + 1 + 1 + (var7 + 1) * (par3 + 2))];
+					int var13 = var5[(var8 + 1 - 1 + (var7 + 1) * (par3 + 2))];
+					int var14 = var5[(var8 + 1 + (var7 + 1 + 1) * (par3 + 2))];
+
+					if ((var11 == var9) && (var12 == var9) && (var13 == var9) && (var14 == var9)) {
+						//FMLLog.info("Changing biome to %s", BiomesOcean.getBiome(var10).biomeName);
+						var6[(var8 + var7 * par3)] = var10;
+					} else {
+						var6[(var8 + var7 * par3)] = var9;
+					}
 				}
 			}
 		}
