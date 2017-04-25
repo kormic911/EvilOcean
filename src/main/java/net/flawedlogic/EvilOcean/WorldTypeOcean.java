@@ -20,6 +20,6 @@ public class WorldTypeOcean extends WorldType {
 
 	@Override
 	public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
-		return new ChunkProviderOcean(world, world.getSeed(), world.getWorldInfo().isMapFeaturesEnabled());
+		return new ChunkProviderOcean(world, world.getSeed(), world.getWorldInfo().isMapFeaturesEnabled(), null);
 	}
 }

@@ -20,43 +20,39 @@ public class GenLayerOceanIslands extends GenLayer {
 				initChunkSeed(var8 + par1, var7 + par2);
 				int var9 = var5[(var8 + 1 + (var7 + 1) * (par3 + 2))];
 
-				if (nextInt(3) == 0) {
-					int var10 = var9;
+				int var10 = var9;
 
-					if (var9 == Biome.getIdForBiome(OceanBiomes.DESERT_OCEAN)) {
-						var10 = Biome.getIdForBiome(OceanBiomes.DESERT_ISLANDS);
-					} else if (var9 == Biome.getIdForBiome(OceanBiomes.FOREST_OCEAN)) {
-						var10 = Biome.getIdForBiome(OceanBiomes.FOREST_ISLANDS);
-					} else if (var9 == Biome.getIdForBiome(OceanBiomes.BIRCH_FOREST_OCEAN)) {
-						var10 = Biome.getIdForBiome(OceanBiomes.BIRCH_FOREST_ISLANDS);
-					} else if (var9 == Biome.getIdForBiome(OceanBiomes.ROOFED_FOREST_OCEAN)) {
-						var10 = Biome.getIdForBiome(OceanBiomes.ROOFED_FOREST_ISLANDS);
-					} else if (var9 == Biome.getIdForBiome(OceanBiomes.TAIGA_OCEAN)) {
-						var10 = Biome.getIdForBiome(OceanBiomes.TAIGA_ISLANDS);
-					} else if (var9 == Biome.getIdForBiome(OceanBiomes.JUNGLE_OCEAN)) {
-						var10 = Biome.getIdForBiome(OceanBiomes.JUNGLE_ISLANDS);
-					} else if (var9 == Biome.getIdForBiome(OceanBiomes.MOUNTAIN_OCEAN)) {
-						var10 = Biome.getIdForBiome(OceanBiomes.MOUNTAIN_ISLANDS);
-					} else if (var9 == Biome.getIdForBiome(OceanBiomes.MESA_OCEAN)) {
-						var10 = Biome.getIdForBiome(OceanBiomes.MESA_ISLANDS);
-					}
+				if (var9 == Biome.getIdForBiome(OceanBiomes.DESERT_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.DESERT_ISLANDS);
+				} else if (var9 == Biome.getIdForBiome(OceanBiomes.FOREST_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.FOREST_ISLANDS);
+				} else if (var9 == Biome.getIdForBiome(OceanBiomes.BIRCH_FOREST_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.BIRCH_FOREST_ISLANDS);
+				} else if (var9 == Biome.getIdForBiome(OceanBiomes.ROOFED_FOREST_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.ROOFED_FOREST_ISLANDS);
+				} else if (var9 == Biome.getIdForBiome(OceanBiomes.TAIGA_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.TAIGA_ISLANDS);
+				} else if (var9 == Biome.getIdForBiome(OceanBiomes.JUNGLE_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.JUNGLE_ISLANDS);
+				} else if (var9 == Biome.getIdForBiome(OceanBiomes.MOUNTAIN_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.MOUNTAIN_ISLANDS);
+				} else if (var9 == Biome.getIdForBiome(OceanBiomes.MESA_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.MESA_ISLANDS);
+				}
 
-					if (var10 == var9) {
-						var6[(var8 + var7 * par3)] = var9;
-					} else {
-						int var11 = var5[(var8 + 1 + (var7 + 1 - 1) * (par3 + 2))];
-						int var12 = var5[(var8 + 1 + 1 + (var7 + 1) * (par3 + 2))];
-						int var13 = var5[(var8 + 1 - 1 + (var7 + 1) * (par3 + 2))];
-						int var14 = var5[(var8 + 1 + (var7 + 1 + 1) * (par3 + 2))];
-
-						if ((var11 == var9) && (var12 == var9) && (var13 == var9) && (var14 == var9)) {
-							var6[(var8 + var7 * par3)] = var10;
-						} else {
-							var6[(var8 + var7 * par3)] = var9;
-						}
-					}
-				} else {
+				if (var10 == var9) {
 					var6[(var8 + var7 * par3)] = var9;
+				} else {
+					int var11 = var5[(var8 + 1 + (var7 + 1 - 1) * (par3 + 2))];
+					int var12 = var5[(var8 + 1 + 1 + (var7 + 1) * (par3 + 2))];
+					int var13 = var5[(var8 + 1 - 1 + (var7 + 1) * (par3 + 2))];
+					int var14 = var5[(var8 + 1 + (var7 + 1 + 1) * (par3 + 2))];
+
+					if ((var11 == var9) && (var12 == var9) && (var13 == var9) && (var14 == var9)) {
+						var6[(var8 + var7 * par3)] = var10;
+					} else {
+						var6[(var8 + var7 * par3)] = var9;
+					}
 				}
 			}
 		}

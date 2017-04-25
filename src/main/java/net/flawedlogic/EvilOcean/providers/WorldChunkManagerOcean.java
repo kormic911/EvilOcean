@@ -43,6 +43,7 @@ public class WorldChunkManagerOcean extends BiomeProvider {
 	}
 
 	public WorldChunkManagerOcean(long par1, WorldType par3WorldType, World world) {
+		this();
 		GenLayer[] agenlayer = GenLayerOcean.initializeAllBiomeGenerators(par1, par3WorldType);
 		agenlayer = getModdedBiomeGenerators(par3WorldType, par1, agenlayer);
 		this.genBiomes = agenlayer[0];
