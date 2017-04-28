@@ -35,7 +35,7 @@ public abstract class OceanBiomes
 
     private static Biome getRegisteredBiome(String id)
     {
-    	FMLLog.log(Level.INFO, "getRegisteredBiome: " + id);
+    	//FMLLog.log(Level.INFO, "getRegisteredBiome: " + id);
         Biome biome = (Biome)Biome.REGISTRY.getObject(new ResourceLocation(id));
 
         if (biome == null)

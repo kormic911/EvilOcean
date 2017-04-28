@@ -191,6 +191,7 @@ public class WorldChunkManagerOcean extends BiomeProvider {
             }
         }
         
+        /*
         if (x == 0 && z == 0 && !world.getWorldInfo().isInitialized()) {
             if (blockpos == null)
             {
@@ -199,6 +200,7 @@ public class WorldChunkManagerOcean extends BiomeProvider {
 
             buildSpawn(world, blockpos.getX(), world.provider.getAverageGroundLevel(), blockpos.getZ());
         }
+        */
 
         return blockpos;
     }

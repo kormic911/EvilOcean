@@ -38,7 +38,7 @@ public abstract class OceanBiome extends Biome {
 		registerBiome(91, "roofed_forest_islands", new BiomeForestIsland(BiomeForest.Type.ROOFED, (new Biome.BiomeProperties("Forest Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setWaterColor(112)));
 		registerBiome(92, "birch_forest_islands", new BiomeForestIsland(BiomeForest.Type.BIRCH, (new Biome.BiomeProperties("Forest Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setWaterColor(112)));
 		registerBiome(93, "mesa_islands", new BiomeMesa(false, false, (new Biome.BiomeProperties("Mesa Island")).setBaseHeight(0.0F).setHeightVariation(0.3F).setWaterColor(112)));
-		FMLLog.log(Level.INFO, "Registered all biomes");
+		//FMLLog.log(Level.INFO, "Registered all biomes");
 		
 	}
 
