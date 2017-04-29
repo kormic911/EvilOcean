@@ -226,15 +226,6 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
                 ++j2;
             }
         }
-        
-        if (p_150795_1_ == 0 && p_150795_2_ == 0 && !world.getWorldInfo().isInitialized()) {
-            if (chunkposition == null)
-            {
-            	chunkposition = new ChunkPosition(0, 0, 0);
-            }
-
-            buildSpawn(world, chunkposition.chunkPosX, world.provider.getAverageGroundLevel(), chunkposition.chunkPosZ);
-        }
 
         return chunkposition;
     }
@@ -250,13 +241,5 @@ public class WorldChunkManagerOcean extends WorldChunkManager {
         WorldTypeEvent.InitBiomeGens event = new WorldTypeEvent.InitBiomeGens(worldType, seed, original);
         MinecraftForge.TERRAIN_GEN_BUS.post(event);
         return event.newBiomeGens;
-    }
-	
-    private void buildSpawn(World world, int x, int y, int z)
-    {
-        FMLLog.info("[EvilOcean] Building spawn platform at: %d, %d, %d", x, y, z);
-        IPlatformGenerator platform = EvilOcean.instance.getPlatformType(world);
-        platform.generate(world, x, y, z);
     }	
-	
 }

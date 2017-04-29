@@ -44,7 +44,7 @@ public class WorldProviderSurfaceOcean extends WorldProviderSurface
     {
         if (EvilOcean.instance.shouldBeOcean(worldObj))
         {
-            return new ChunkProviderOcean(worldObj, worldObj.getSeed(), false);
+            return new ChunkProviderOcean(worldObj, worldObj.getSeed(), true);
         }
         return terrainType.getChunkGenerator(worldObj, field_82913_c);
     }

@@ -1,5 +1,6 @@
 package net.flawedlogic.EvilOcean.layers;
 
+import net.flawedlogic.EvilOcean.EvilOcean;
 import net.flawedlogic.EvilOcean.biomes.BiomesOcean;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -39,7 +40,7 @@ public class GenLayerBiomeOcean extends GenLayer {
         for (int dz = 0; dz < depth; dz++) { 
             for (int dx = 0; dx < width; dx++) { 
                 this.initChunkSeed(dx + x, dz + z); 
-                if(nextInt(10) == 0) {
+                if(nextInt(EvilOcean.instance.islandSpawnRate) == 0 && EvilOcean.instance.enableIslands) {
                 	dest[(dx + dz * width)] = this.allowedBiomes[nextInt(this.allowedBiomes.length)].biomeID; 
                 } else {
                 	dest[(dx + dz * width)] = BiomeGenBase.ocean.biomeID;

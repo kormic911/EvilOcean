@@ -1,5 +1,6 @@
 package net.flawedlogic.EvilOcean.layers;
 
+import net.flawedlogic.EvilOcean.EvilOcean;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.GenLayerAddIsland;
@@ -25,10 +26,10 @@ public abstract class GenLayerOcean extends GenLayer {
 	public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType) {
 		GenLayer biomes = new GenLayerBiomeOcean(1L);
 		biomes = new GenLayerZoom(1000L, biomes);
-		biomes = new GenLayerZoom(1001L, biomes);
-		biomes = new GenLayerZoom(1002L, biomes);
-		biomes = new GenLayerZoom(1003L, biomes);
-		biomes = new GenLayerOceanIslands(1003L, biomes);
+		for(int k = 1; k <= EvilOcean.instance.islandSpawnSize; k++) {
+			biomes = new GenLayerZoom((long)(1000 + k), biomes);
+		}
+		biomes = new GenLayerOceanIslands((long)(1000 + EvilOcean.instance.islandSpawnSize), biomes);
 		biomes = GenLayerZoom.magnify(1000L, biomes, 0);
 		biomes = new GenLayerDeepOcean(4L, biomes);
         
