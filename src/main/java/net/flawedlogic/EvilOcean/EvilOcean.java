@@ -1,6 +1,7 @@
 package net.flawedlogic.EvilOcean;
 
 import net.flawedlogic.EvilOcean.biomes.OceanBiome;
+import net.flawedlogic.EvilOcean.events.EventSpawnPlayer;
 import net.flawedlogic.EvilOcean.events.EventWaterDrown;
 import net.flawedlogic.EvilOcean.generators.IPlatformGenerator;
 import net.flawedlogic.EvilOcean.generators.RaftPlatform;
@@ -35,12 +36,15 @@ public class EvilOcean
 	@Instance("evilocean")
 	public static EvilOcean instance;
     public static final String MODID = "evilocean";
-    public static final String VERSION = "1.0.2";
+    public static final String VERSION = "1.0.3";
     
     public Boolean isOcean = false;
     public Boolean instantDrown = false;
     public Boolean enableIslands = true;
+    public Boolean enableSpawnSpread = false;
     public int islandSpawnRate = 3;
+    public int islandSpawnSize = 3;
+    public int spawnSpreadDistance = 200000;
     public String[] treasureItems;
     
     private Map<String, IPlatformGenerator> generators = Maps.newHashMap();
@@ -57,7 +61,10 @@ public class EvilOcean
     		isOcean = config.getBoolean("is ocean", "general", true, "Enabling this will cause the overworld to be an ocean world");
     		instantDrown = config.getBoolean("instant drown", "general", true, "Enabling this will cause you to drown instantly when you run out of air bubbles");
     		enableIslands = config.getBoolean("Enable Islands", "general", true, "Enabling this will enable island generation throughout the world");
-    		islandSpawnRate = config.getInt("Island Spawn Rate", "general", 3, 1, 10, "Sets the random chance that an island will spawm within a biome as well as how large the island will be, the lower the number the more frequent and larger");
+    		islandSpawnRate = config.getInt("Island Spawn Rate", "general", 10, 1, 20, "Sets the random chance that an island will spawn within a biome, the lower the number the more frequent");
+    		islandSpawnSize = config.getInt("Island Spawn Size",  "general", 3, 1, 10, "Sets how large the islands will be, lower is smaller");
+    		enableSpawnSpread = config.getBoolean("Enable Spawn Spread",  "general", false, "Enabling this will enable random spawn points for all players who join the game");
+    		spawnSpreadDistance = config.getInt("Spawn Spread Distance",  "general", 200000, 250, 1000000, "Sets the disance between player spawn points (in blocks)");
     		//treasureItems = config.getStringList("items", "treasure", new String[] {"minecraft:gold_nugget:0=50,1:4", "minecraft:melon_seeds:0=10,1:10", "minecraft:gold_ingot:0=10,1:2", "minecraft:golden_apple:0=10,1:1"}, "List of items to use in treasure generation. Use this format: modid:itemName:metaId=weight,qtyMin:qtyMax");
     		
     	} catch(Exception e) {
@@ -109,8 +116,9 @@ public class EvilOcean
     public void init(FMLInitializationEvent event)
     {
     	if(instantDrown) {
-    		MinecraftForge.EVENT_BUS.register(new EventWaterDrown(null));
+    		MinecraftForge.EVENT_BUS.register(new EventWaterDrown());
     	}
+    	MinecraftForge.EVENT_BUS.register(new EventSpawnPlayer());
     }
     
     public IPlatformGenerator getPlatformType(World world)

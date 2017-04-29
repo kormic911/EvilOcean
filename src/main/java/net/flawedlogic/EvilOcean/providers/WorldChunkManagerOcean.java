@@ -163,15 +163,6 @@ public class WorldChunkManagerOcean extends BiomeProvider {
 			pos = new BlockPos(l2, 0, i3);
 			++j2;
 		}
-		
-        if (x == 0 && z == 0 && !world.getWorldInfo().isInitialized()) {
-            if (pos == null)
-            {
-            	pos = new BlockPos(0, 0, 0);
-            }
-
-            buildSpawn(world, pos.getX(), world.provider.getAverageGroundLevel(), pos.getZ());
-        }
 
 		return pos;
 	}
@@ -187,13 +178,5 @@ public class WorldChunkManagerOcean extends BiomeProvider {
 		WorldTypeEvent.InitBiomeGens event = new WorldTypeEvent.InitBiomeGens(worldType, seed, original);
 		MinecraftForge.TERRAIN_GEN_BUS.post(event);
 		return event.getNewBiomeGens();
-	}
-	
-    private void buildSpawn(World world, int x, int y, int z)
-    {
-        FMLLog.info("[EvilOcean] Building spawn platform at: %d, %d, %d", x, y, z);
-        IPlatformGenerator platform = EvilOcean.instance.getPlatformType(world);
-        platform.generate(world, x, y, z);
-    }	
-	
+	}	
 }
