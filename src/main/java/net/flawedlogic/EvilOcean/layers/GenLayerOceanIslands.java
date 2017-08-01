@@ -1,9 +1,11 @@
 package net.flawedlogic.EvilOcean.layers;
 
+import net.flawedlogic.EvilOcean.biomes.OceanBiome;
 import net.flawedlogic.EvilOcean.biomes.OceanBiomes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
+import net.minecraftforge.fml.common.FMLLog;
 
 public class GenLayerOceanIslands extends GenLayer {
 	public GenLayerOceanIslands(long par1, GenLayer par3GenLayer) {
@@ -22,6 +24,9 @@ public class GenLayerOceanIslands extends GenLayer {
 
 				int var10 = var9;
 
+				var10 = Biome.getIdForBiome(OceanBiome.OCEAN_TO_ISLAND_MAP.get(Biome.getBiomeForId(var9)));
+				//FMLLog.info("Setting %d to %d", var9, var10);
+				/*
 				if (var9 == Biome.getIdForBiome(OceanBiomes.DESERT_OCEAN)) {
 					var10 = Biome.getIdForBiome(OceanBiomes.DESERT_ISLANDS);
 				} else if (var9 == Biome.getIdForBiome(OceanBiomes.FOREST_OCEAN)) {
@@ -34,11 +39,12 @@ public class GenLayerOceanIslands extends GenLayer {
 					var10 = Biome.getIdForBiome(OceanBiomes.TAIGA_ISLANDS);
 				} else if (var9 == Biome.getIdForBiome(OceanBiomes.JUNGLE_OCEAN)) {
 					var10 = Biome.getIdForBiome(OceanBiomes.JUNGLE_ISLANDS);
-				} else if (var9 == Biome.getIdForBiome(OceanBiomes.MOUNTAIN_OCEAN)) {
-					var10 = Biome.getIdForBiome(OceanBiomes.MOUNTAIN_ISLANDS);
+				} else if (var9 == Biome.getIdForBiome(OceanBiomes.EXTREME_HILLS_OCEAN)) {
+					var10 = Biome.getIdForBiome(OceanBiomes.EXTREME_HILLS_ISLANDS);
 				} else if (var9 == Biome.getIdForBiome(OceanBiomes.MESA_OCEAN)) {
 					var10 = Biome.getIdForBiome(OceanBiomes.MESA_ISLANDS);
 				}
+				*/
 
 				if (var10 == var9) {
 					var6[(var8 + var7 * par3)] = var9;

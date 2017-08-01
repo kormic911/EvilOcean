@@ -36,7 +36,7 @@ public class EvilOcean
 	@Instance("evilocean")
 	public static EvilOcean instance;
     public static final String MODID = "evilocean";
-    public static final String VERSION = "1.0.3";
+    public static final String VERSION = "1.0.6";
     
     public Boolean isOcean = false;
     public Boolean instantDrown = false;

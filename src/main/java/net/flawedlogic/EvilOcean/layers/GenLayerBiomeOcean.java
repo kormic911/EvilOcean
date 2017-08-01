@@ -10,18 +10,7 @@ import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerBiomeOcean extends GenLayer {
-	protected Biome[] allowedBiomes = {
-			Biomes.OCEAN,
-			Biomes.DEEP_OCEAN, 
-			OceanBiomes.FOREST_OCEAN,
-			OceanBiomes.DESERT_OCEAN, 
-			OceanBiomes.JUNGLE_OCEAN, 
-			OceanBiomes.MOUNTAIN_OCEAN, 
-			OceanBiomes.TAIGA_OCEAN,
-			OceanBiomes.BIRCH_FOREST_OCEAN, 
-			OceanBiomes.ROOFED_FOREST_OCEAN, 
-			OceanBiomes.MESA_OCEAN	
-	};
+	protected Object[] allowedBiomes = OceanBiome.ISLAND_OCEAN_BIOMES_LIST.toArray();
 	
 	public GenLayerBiomeOcean(long par1) {
 		super(par1);
@@ -43,7 +32,7 @@ public class GenLayerBiomeOcean extends GenLayer {
             for (int dx = 0; dx < width; dx++) { 
                 this.initChunkSeed(dx + x, dz + z); 
                 if(nextInt(EvilOcean.instance.islandSpawnRate) == 0 && EvilOcean.instance.enableIslands) {
-                	dest[(dx + dz * width)] = OceanBiome.getIdForBiome(this.allowedBiomes[nextInt(this.allowedBiomes.length)]);
+                	dest[(dx + dz * width)] = OceanBiome.getIdForBiome((Biome)this.allowedBiomes[nextInt(this.allowedBiomes.length)]);
                 } else {
                 	dest[(dx + dz * width)] = Biome.getIdForBiome(Biomes.OCEAN);
                 }
