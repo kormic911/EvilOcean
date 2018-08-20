@@ -127,6 +127,7 @@ public abstract class OceanBiome extends Biome {
 		registerIslandBiome(193, "savanna_rock_islands", new BiomeSavanna((new Biome.BiomeProperties("Savanna Plateau Island")).setBaseHeight(1.5F).setHeightVariation(0.025F).setTemperature(1.0F).setRainfall(0.0F).setRainDisabled()));
 		registerIslandBiome(194, "mesa_rock_islands", new BiomeMesa(false, true, (new Biome.BiomeProperties("Mesa Plateau F Island")).setBaseHeight(1.5F).setHeightVariation(0.025F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled()));
 		registerIslandBiome(195, "mesa_clear_rock_islands", new BiomeMesa(false, false, (new Biome.BiomeProperties("Mesa Plateau Island")).setBaseHeight(1.5F).setHeightVariation(0.025F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled()));		
+		/*
 		registerIslandBiome(196, "mutated_plains_islands", new BiomePlains(true, (new Biome.BiomeProperties("Sunflower Plains Island")).setBaseBiome("plains").setBaseHeight(0.125F).setHeightVariation(0.05F).setTemperature(0.8F).setRainfall(0.4F)));
 		registerIslandBiome(197, "mutated_desert_islands", new BiomeDesert((new Biome.BiomeProperties("Desert M Island")).setBaseBiome("desert").setBaseHeight(0.225F).setHeightVariation(0.25F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled()));
 		registerIslandBiome(198, "mutated_extreme_hills_islands", new BiomeHills(BiomeHills.Type.MUTATED, (new Biome.BiomeProperties("Extreme Hills M Island")).setBaseBiome("extreme_hills").setBaseHeight(1.0F).setHeightVariation(0.5F).setTemperature(0.2F).setRainfall(0.3F)));
@@ -145,9 +146,10 @@ public abstract class OceanBiome extends Biome {
 		registerIslandBiome(211, "mutated_extreme_hills_with_trees_islands", new BiomeHills(BiomeHills.Type.MUTATED, (new Biome.BiomeProperties("Extreme Hills+ M Island")).setBaseBiome("extreme_hills_with_trees").setBaseHeight(1.0F).setHeightVariation(0.5F).setTemperature(0.2F).setRainfall(0.3F)));
 		registerIslandBiome(212, "mutated_savanna_islands", new BiomeSavannaMutated((new Biome.BiomeProperties("Savanna M Island")).setBaseBiome("savanna").setBaseHeight(0.3625F).setHeightVariation(1.225F).setTemperature(1.1F).setRainfall(0.0F).setRainDisabled()));
 		registerIslandBiome(213, "mutated_savanna_rock_islands", new BiomeSavannaMutated((new Biome.BiomeProperties("Savanna Plateau M Island")).setBaseBiome("savanna_rock").setBaseHeight(1.05F).setHeightVariation(1.2125001F).setTemperature(1.0F).setRainfall(0.0F).setRainDisabled()));
-		/**///registerIslandBiome(214, "mutated_mesa_islands", new BiomeMesa(true, false, (new Biome.BiomeProperties("Mesa (Bryce) Island")).setBaseBiome("mesa").setTemperature(2.0F).setRainfall(0.0F).setRainDisabled()));
+		//registerIslandBiome(214, "mutated_mesa_islands", new BiomeMesa(true, false, (new Biome.BiomeProperties("Mesa (Bryce) Island")).setBaseBiome("mesa").setTemperature(2.0F).setRainfall(0.0F).setRainDisabled()));
 		registerIslandBiome(215, "mutated_mesa_rock_islands", new BiomeMesa(false, true, (new Biome.BiomeProperties("Mesa Plateau F M Island")).setBaseBiome("mesa_rock").setBaseHeight(0.45F).setHeightVariation(0.3F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled()));
 		registerIslandBiome(216, "mutated_mesa_clear_rock_islands", new BiomeMesa(false, false, (new Biome.BiomeProperties("Mesa Plateau M Island")).setBaseBiome("mesa_clear_rock").setBaseHeight(0.45F).setHeightVariation(0.3F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled()));
+		*/
 	
 		FMLLog.log(Level.INFO, "Registered all biomes");
 		
@@ -180,6 +182,7 @@ public abstract class OceanBiome extends Biome {
 		BiomeDictionary.addTypes(OceanBiomes.MESA_ISLANDS,                             MESA,     SANDY                                         );
 		BiomeDictionary.addTypes(OceanBiomes.MESA_ROCK_ISLANDS,                        MESA,     SPARSE,     SANDY                             );
 		BiomeDictionary.addTypes(OceanBiomes.MESA_CLEAR_ROCK_ISLANDS,                  MESA,     SANDY                                         );
+		/*
 		BiomeDictionary.addTypes(OceanBiomes.MUTATED_PLAINS_ISLANDS,                   PLAINS,   RARE                                          );
 		BiomeDictionary.addTypes(OceanBiomes.MUTATED_DESERT_ISLANDS,                   HOT,      DRY,        SANDY,    RARE                    );
 		BiomeDictionary.addTypes(OceanBiomes.MUTATED_EXTREME_HILLS_ISLANDS,            MOUNTAIN, SPARSE,     RARE                              );
@@ -201,6 +204,7 @@ public abstract class OceanBiome extends Biome {
 		//BiomeDictionary.addTypes(OceanBiomes.MUTATED_MESA_ISLANDS,                     HOT,      DRY,        SPARSE,   SAVANNA,  MOUNTAIN, RARE);
 		BiomeDictionary.addTypes(OceanBiomes.MUTATED_MESA_ROCK_ISLANDS,                HOT,      DRY,        SPARSE,   HILLS,    RARE          );
 		BiomeDictionary.addTypes(OceanBiomes.MUTATED_MESA_CLEAR_ROCK_ISLANDS,          HOT,      DRY,        SPARSE,   SAVANNA,  MOUNTAIN, RARE);
+		*/
 		
 	}
 

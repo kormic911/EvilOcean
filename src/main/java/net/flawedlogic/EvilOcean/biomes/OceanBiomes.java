@@ -42,6 +42,7 @@ public abstract class OceanBiomes
     public static final Biome MESA_ISLANDS;
     public static final Biome MESA_ROCK_ISLANDS;
     public static final Biome MESA_CLEAR_ROCK_ISLANDS;
+    /*
     public static final Biome MUTATED_PLAINS_ISLANDS;
     public static final Biome MUTATED_DESERT_ISLANDS;
     public static final Biome MUTATED_EXTREME_HILLS_ISLANDS;
@@ -63,6 +64,7 @@ public abstract class OceanBiomes
     //public static final Biome MUTATED_MESA_ISLANDS;
     public static final Biome MUTATED_MESA_ROCK_ISLANDS;
     public static final Biome MUTATED_MESA_CLEAR_ROCK_ISLANDS;
+    */
     public static final Biome MOUNTAIN_ISLANDS;
     
     
@@ -97,6 +99,7 @@ public abstract class OceanBiomes
     public static final Biome MESA_OCEAN;
     public static final Biome MESA_ROCK_OCEAN;
     public static final Biome MESA_CLEAR_ROCK_OCEAN;
+    /*
     public static final Biome MUTATED_PLAINS_OCEAN;
     public static final Biome MUTATED_DESERT_OCEAN;
     public static final Biome MUTATED_EXTREME_HILLS_OCEAN;
@@ -118,6 +121,7 @@ public abstract class OceanBiomes
     //public static final Biome MUTATED_MESA_OCEAN;
     public static final Biome MUTATED_MESA_ROCK_OCEAN;
     public static final Biome MUTATED_MESA_CLEAR_ROCK_OCEAN;
+    */
     public static final Biome MOUNTAIN_OCEAN;
 
 
@@ -173,6 +177,7 @@ public abstract class OceanBiomes
             MESA_ISLANDS = getRegisteredBiome("mesa_islands");
             MESA_ROCK_ISLANDS = getRegisteredBiome("mesa_rock_islands");
             MESA_CLEAR_ROCK_ISLANDS = getRegisteredBiome("mesa_clear_rock_islands");
+            /*
             MUTATED_PLAINS_ISLANDS = getRegisteredBiome("mutated_plains_islands");
             MUTATED_DESERT_ISLANDS = getRegisteredBiome("mutated_desert_islands");
             MUTATED_EXTREME_HILLS_ISLANDS = getRegisteredBiome("mutated_extreme_hills_islands");
@@ -194,6 +199,7 @@ public abstract class OceanBiomes
             //MUTATED_MESA_ISLANDS = getRegisteredBiome("mutated_mesa_islands");
             MUTATED_MESA_ROCK_ISLANDS = getRegisteredBiome("mutated_mesa_rock_islands");
             MUTATED_MESA_CLEAR_ROCK_ISLANDS = getRegisteredBiome("mutated_mesa_clear_rock_islands");
+            */
             
             MOUNTAIN_OCEAN = getRegisteredBiome("extreme_hills_ocean");
             OCEAN = getRegisteredBiome("ocean");
@@ -226,6 +232,7 @@ public abstract class OceanBiomes
             MESA_OCEAN = getRegisteredBiome("mesa_ocean");
             MESA_ROCK_OCEAN = getRegisteredBiome("mesa_rock_ocean");
             MESA_CLEAR_ROCK_OCEAN = getRegisteredBiome("mesa_clear_rock_ocean");
+            /*
             MUTATED_PLAINS_OCEAN = getRegisteredBiome("mutated_plains_ocean");
             MUTATED_DESERT_OCEAN = getRegisteredBiome("mutated_desert_ocean");
             MUTATED_EXTREME_HILLS_OCEAN = getRegisteredBiome("mutated_extreme_hills_ocean");
@@ -247,6 +254,7 @@ public abstract class OceanBiomes
             //MUTATED_MESA_OCEAN = getRegisteredBiome("mutated_mesa_ocean");
             MUTATED_MESA_ROCK_OCEAN = getRegisteredBiome("mutated_mesa_rock_ocean");
             MUTATED_MESA_CLEAR_ROCK_OCEAN = getRegisteredBiome("mutated_mesa_clear_rock_ocean");
+            */
             
             Iterator<Biome> islandOceanIter = OceanBiome.ISLAND_OCEAN_BIOMES_LIST.iterator();
             while(islandOceanIter.hasNext()) {
